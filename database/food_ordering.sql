@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2021 at 05:06 PM
+-- Generation Time: Apr 28, 2021 at 08:15 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `username`, `password`, `email`) VALUES
-(1, 'Admin', 'admin', 'admin', 'admin@gmail.com');
+(1, 'Admin1', 'admin', 'admin', 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -83,6 +83,13 @@ CREATE TABLE `coupon_code` (
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `coupon_code`
+--
+
+INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
+(1, 'udemy30', 'F', 100, 200, '2021-05-01', 1, '2021-04-28 06:50:09');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +104,13 @@ CREATE TABLE `delivery_boy` (
   `status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `delivery_boy`
+--
+
+INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`) VALUES
+(1, 'asad', '0137574556575', '123', 1, '2021-04-28 06:48:55');
 
 -- --------------------------------------------------------
 
@@ -187,8 +201,16 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `mobile` varchar(15) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `added_on` datetime NOT NULL
+  `added_on` datetime NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`) VALUES
+(1, 'asheq rahman', 'tretgdt@gmail.com', '0104212', '123', '2021-04-28 18:02:08', 1);
 
 --
 -- Indexes for dumped tables
@@ -274,13 +296,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `delivery_boy`
 --
 ALTER TABLE `delivery_boy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dish`
@@ -316,7 +338,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
