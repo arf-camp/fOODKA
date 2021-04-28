@@ -66,5 +66,9 @@ Code Understanding help:(important files!)
 2.for page reloading ,given right error mssg with right functionality and success mssg pop up functionality we have used jquery/Ajax. you can read the custom.js(on foodka/assets/js/) file also. 
 
 
+ABOUT PROJECT FEATURES:
+
+GO TO THE README FILES  FOLDER AND READ THE .DOCX
+
 
 
