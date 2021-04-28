@@ -1,0 +1,18 @@
+
+Day 01
+
+
+admin login page (static),error mssg,logout
+admin page setup (top/footer)
+category page setup -funcionality:adding ,
+status active-deactive/delete/edit/error mssg
+
+
+Day 02
+
+hand cursar on active /deactivate action
+coupon code 
+delivery boy
+users
+
+Day 03
