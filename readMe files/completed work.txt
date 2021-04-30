@@ -16,3 +16,12 @@ delivery boy
 users
 
 Day 03
+
+Dish page creation
+manage Dish Image : updating /inserting/ error mssg/image condition /violation error msg
+admin section title setup 
+
+Day 04
+
+
+unlink the previous image on update

@@ -3,12 +3,31 @@
 session_start();
 include('database.inc.php');
 include('function.inc.php');
+include('constant.inc.php');
+
+
+
+$curStr=$_SERVER['REQUEST_URI'];
+$curArr=explode('/',$curStr);
+$cur_path=$curArr[count($curArr)-1];
 
 if(!isset($_SESSION['IS_LOGIN'])){
-	redirect('login.php');
+  redirect('login.php');
 }
-
-
+$page_title='';
+if($cur_path=='' || $cur_path=='index.php'){
+  $page_title='Dashboard';
+}elseif($cur_path=='category.php' || $cur_path=='manage_category.php'){
+  $page_title='Manage Category';
+}elseif($cur_path=='user.php' || $cur_path=='manage_user.php'){
+  $page_title='Customer';
+}elseif($cur_path=='delivery_boy.php' || $cur_path=='manage_delivery_boy.php'){
+  $page_title='Manage Delivery Boy';
+}elseif($cur_path=='coupon_code.php' || $cur_path=='manage_coupon_code.php'){
+  $page_title='Manage Coupon Code';
+}elseif($cur_path=='dish.php' || $cur_path=='manage_dish.php'){
+  $page_title='Manage Dish';
+}
 
 
 
@@ -28,7 +47,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>FoodKA Admin</title>
+  <title><?php echo $page_title?></title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/css/vendor.bundle.base.css">
@@ -90,33 +109,71 @@ if(!isset($_SESSION['IS_LOGIN'])){
           <li class="nav-item">
             <a class="nav-link" href="index.php">
               <i class="mdi mdi-view-quilt menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title"> Dashboard</span>
             </a>
           </li>
 
+        
+
           <li class="nav-item">
+            <a class="nav-link" href="user.php">
+              <i class="mdi mdi-contact-mail"></i>
+              <span class="menu-title"> Users</span>
+            </a>
+          </li>
+
+  <li class="nav-item">
             <a class="nav-link" href="category.php">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Category</span>
+              <i class="mdi mdi-format-align-justify"></i>
+              <span class="menu-title"> Category</span>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="users.php">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Users</span>
+
+ <li class="nav-item">
+            <a class="nav-link" href="dish.php">
+              <i class="mdi mdi-food-fork-drink"></i>
+              <span class="menu-title"> Dish</span>
             </a>
           </li>
+
+
+
+
+
+
+
       <li class="nav-item">
             <a class="nav-link" href="delivery_boy.php">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Delivery Boy</span>
+              <i class="mdi mdi-face-profile"></i>
+              <span class="menu-title"> Delivery Boy</span>
             </a>
           </li>
        <li class="nav-item">
             <a class="nav-link" href="coupon_code.php">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Coupon Code</span>
+              <i class="mdi mdi-emoticon-tongue"></i>
+              <span class="menu-title"> Coupon Code</span>
+            </a>
+          </li>
+
+
+
+          
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact_us.php">
+              <i class="mdi mdi-email-open"></i>
+              <span class="menu-title"> Contact Us</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="banner.php">
+              <i class="mdi mdi-file-image"></i>
+              <span class="menu-title"> Banner</span>
             </a>
           </li>
 
