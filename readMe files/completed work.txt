@@ -25,3 +25,4 @@ Day 04
 
 
 unlink the previous image on update
+dish management complete with attribute
