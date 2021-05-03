@@ -26,3 +26,11 @@ Day 04
 
 unlink the previous image on update
 dish management complete with attribute
+
+
+Day 05
+
+(all about front end)
+Customer Site Theme integration-Home page/Shop page/ about us /contact us /cart/checkout
+
+Fetching category/ Dish picture and name 

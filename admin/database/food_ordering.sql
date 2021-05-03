@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2021 at 03:06 AM
+-- Generation Time: May 03, 2021 at 02:07 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -136,7 +136,9 @@ INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `status
 (1, 1, 'MOJO', 'cold drink test', 'Mojo-Soft-Drink-1-Liter.jpg', 1, '2021-04-29 19:09:13'),
 (2, 2, 'Noodles', 'indian', '836724175_Vegetarian-Chowmein-Recipe-Step-By-Step-Instructions.jpg', 1, '2021-04-30 12:53:14'),
 (3, 4, 'roshogolla', 'kolkatan', '467_rosh2.jpg', 1, '2021-04-30 02:02:17'),
-(4, 1, '7 up ', 'cold drinks', '7 up.jpg', 1, '2021-04-30 02:35:29');
+(4, 1, '7 up ', 'cold drinks', '7 up.jpg', 1, '2021-04-30 02:35:29'),
+(5, 2, 'Noodles chinese', 'sold by per plate', '834_chinese.jpg', 1, '2021-05-01 02:00:30'),
+(6, 4, 'Mishti doi', 'tangail', '918_mishti-doi-recipe.jpg', 1, '2021-05-01 04:08:27');
 
 -- --------------------------------------------------------
 
@@ -152,6 +154,22 @@ CREATE TABLE `dish_details` (
   `status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dish_details`
+--
+
+INSERT INTO `dish_details` (`id`, `dish_id`, `attribute`, `price`, `status`, `added_on`) VALUES
+(1, 5, 'half', 202, 1, '2021-05-01 02:00:30'),
+(4, 5, 'full', 250, 1, '2021-05-01 03:57:17'),
+(5, 4, '1 litre', 45, 1, '2021-05-01 04:01:14'),
+(6, 3, '1 kg ', 202, 1, '2021-05-01 04:03:38'),
+(7, 3, '.5 kg', 100, 1, '2021-05-01 04:03:38'),
+(8, 2, '1 plate', 50, 1, '2021-05-01 04:04:50'),
+(9, 2, '5 plate', 200, 1, '2021-05-01 04:04:50'),
+(10, 1, '1 litre', 70, 1, '2021-05-01 04:05:25'),
+(11, 6, 'per hari ', 70, 1, '2021-05-01 04:08:27'),
+(12, 6, 'per kolshi', 120, 1, '2021-05-01 04:08:27');
 
 -- --------------------------------------------------------
 
@@ -318,13 +336,13 @@ ALTER TABLE `delivery_boy`
 -- AUTO_INCREMENT for table `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
 --
 ALTER TABLE `dish_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `order_detail`

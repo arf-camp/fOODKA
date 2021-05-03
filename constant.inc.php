@@ -1,6 +1,6 @@
 <?php
-define('SITE_NAME','FoodKA Admin');
-
+define('SITE_NAME','FoodKA Admin');      //admin site title (not using for now)
+define('FRONT_SITE_NAME','FoodKA App'); //cusomer site title
 
 
      //server path 

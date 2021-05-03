@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include('database.inc.php');
-include('function.inc.php');
+include('../database.inc.php');
+include('../function.inc.php');
 
 $msg="";
 if(isset($_POST['submit']))
