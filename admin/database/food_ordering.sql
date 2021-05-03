@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2021 at 02:07 AM
+-- Generation Time: May 04, 2021 at 01:33 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -41,6 +41,32 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `username`, `password`, `email`) VALUES
 (1, 'Admin1', 'admin', 'admin', 'admin@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `heading` varchar(500) NOT NULL,
+  `sub_heading` varchar(500) NOT NULL,
+  `link` varchar(100) NOT NULL,
+  `link_txt` varchar(100) NOT NULL,
+  `added_on` datetime NOT NULL,
+  `status` int(11) NOT NULL,
+  `order_number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`id`, `image`, `heading`, `sub_heading`, `link`, `link_txt`, `added_on`, `status`, `order_number`) VALUES
+(3, '3369_546847873_banner-4.jpg', 'EAT FOOD FROM US ', 'AND GO TO BATHROOM ALL THE DAY', 'shop.php', 'ORDER NOW', '2021-05-04 01:12:11', 1, 1),
+(4, '2472_662516275_banner-3.jpg', 'EAT THE WORST FOOD FROM US ', 'AND GO TO BATHROOM ALL THE DAY', 'shop.php', 'SHOP NOW', '2021-05-04 01:13:25', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -251,6 +277,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -313,6 +345,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category`
