@@ -63,29 +63,51 @@ include('header.php');
                         <div class="contact-message-wrapper">
                             <h4 class="contact-title">GET IN TOUCH</h4>
                             <div class="contact-message">
-                                <form id="contact-form" action="https://demo.hasthemes.com/billy-preview/billy/assets/mail.php" method="post">
+                                <form id="contact-form" action="contact_us_submit.php" method="post">
+                                    
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        
+                                        <div class="col-lg-4">
                                             <div class="contact-form-style mb-20">
-                                                <input name="name" placeholder="Full Name" type="text">
+                                                <input name="name" placeholder="Full Name" type="text" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+
+
+                                        <div class="col-lg-4">
                                             <div class="contact-form-style mb-20">
-                                                <input name="email" placeholder="Email Address" type="email">
+                                                <input name="email" placeholder="Email Address" type="email" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+
+                                       <div class="col-lg-4">
                                             <div class="contact-form-style mb-20">
-                                                <input name="subject" placeholder="Subject" type="text">
+                                                <input name="mobile" placeholder="Mobile" type="text" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+
+                                  
+                                  <div class="col-lg-12">
+                                            <div class="contact-form-style mb-20">
+                                                <input name="subject" placeholder="Subject" type="text" required>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                         <div class="col-lg-12">
                                             <div class="contact-form-style">
-                                                <textarea name="message" placeholder="Message"></textarea>
+                                                <textarea name="message" placeholder="Message" required></textarea>
+
                                                 <button class="submit btn-style" type="submit">SEND MESSAGE</button>
+
                                             </div>
                                         </div>
+
+
                                     </div>
                                 </form>
                                 <p class="form-messege"></p>

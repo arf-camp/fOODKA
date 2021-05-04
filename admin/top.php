@@ -29,7 +29,7 @@ if($cur_path=='' || $cur_path=='index.php'){
   $page_title='Manage Dish';
 }elseif($cur_path=='banner.php' || $cur_path=='manage_banner.php'){
   $page_title='Manage Banner';
-}elseif($cur_path=='contact_us.php' || $cur_path=='manage_contact_us.php'){
+}elseif($cur_path=='contact_us.php'){
   $page_title='Customer Feedback ';
 }
 
