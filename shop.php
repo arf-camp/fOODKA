@@ -3,7 +3,10 @@
 
 include('header.php');
 
-
+$cat_dish='';
+if(isset($_GET['cat_dish'])){
+    $cat_dish=$_GET['cat_dish'];
+}
 
 
  ?>
@@ -120,7 +123,14 @@ include('header.php');
                                             if($cat_id==$cat_row['id']){
                                                 $class="active";
                                             }
-                                            echo "<li> <a class='$class' href='shop.php?cat_id=".$cat_row['id']."'>".$cat_row['category']."</a></li>";  
+
+
+
+                                            ///for oneline tap
+                                            // echo "<li> <a class='$class' href='shop.php?cat_id=".$cat_row['id']."'>".$cat_row['category']."</a></li>";  
+//checkbox
+
+ echo "<li> <input onclick=set_checkbox('".$cat_row['id']."') type='checkbox' class='cat_checkbox' name='cat_arr[]' value='".$cat_row['id']."'/>".$cat_row['category']."</li>";
 
                                         }
                                         ?>
@@ -143,6 +153,25 @@ include('header.php');
                 </div>
             </div>
         </div>
+
+
+<!-- for checkbox category functionality -->
+
+<form method="get" id="frmCatDish">
+            <input type="textbox" name="cat_dish" id="cat_dish" value='<?php echo $cat_dish?>'/>
+        </form>
+
+            <script>
+            function set_checkbox(id){
+                var cat_dish=jQuery('#cat_dish').val();
+                cat_dish=cat_dish+":"+id;
+                jQuery('#cat_dish').val(cat_dish);
+                jQuery('#frmCatDish')[0].submit();
+            }
+        </script>
+
+
+
        
 
 <?php  include('footer.php'); ?>
