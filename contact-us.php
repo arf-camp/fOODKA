@@ -28,8 +28,9 @@ include('header.php');
                             </div>
                             <div class="contact-info-content">
                                 <h4>Our Location</h4>
-                                <p>012 345 678 / 123 456 789</p>
-                                <p><a href="#">info@example.com</a></p>
+                                <p>khilgaon,Dhaka</p>
+                                <p>019 26219940</p>
+                                <p><a href="#">asheqrahman2621@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -40,8 +41,8 @@ include('header.php');
                             </div>
                             <div class="contact-info-content">
                                 <h4>Contact us Anytime</h4>
-                                <p>Mobile: 012 345 678</p>
-                                <p>Fax: 123 456 789</p>
+                                <p>Mobile:019 26219940</p>
+                                <p>khilgaon,Dhaka</p>
                             </div>
                         </div>
                     </div>
@@ -52,8 +53,8 @@ include('header.php');
                             </div>
                             <div class="contact-info-content">
                                 <h4>Write Some Words</h4>
-                                <p><a href="#">Support24/7@example.com </a></p>
-                                <p><a href="#">info@example.com</a></p>
+                                <p><a href="#">Support24/7</a></p>
+                                <p><a href="#">tysonfarib@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -63,6 +64,7 @@ include('header.php');
                         <div class="contact-message-wrapper">
                             <h4 class="contact-title">GET IN TOUCH</h4>
                             <div class="contact-message">
+                               
                                 <form id="contact-form" action="contact_us_submit.php" method="post">
                                     
                                     <div class="row">
@@ -82,7 +84,7 @@ include('header.php');
 
                                        <div class="col-lg-4">
                                             <div class="contact-form-style mb-20">
-                                                <input name="mobile" placeholder="Mobile" type="text" required>
+                                                <input name="mobile" placeholder="Mobile" type="number" required>
                                             </div>
                                         </div>
 

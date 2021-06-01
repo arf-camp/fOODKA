@@ -25,6 +25,9 @@ include('constant.inc.php');
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
+       <!--  my arf icon -->
+        <link rel="icon" type="image/jpg" href="images/myLogo.jpg">
+        
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>

@@ -62,6 +62,8 @@ if($cur_path=='' || $cur_path=='index.php'){
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="assets/css/style.css">
+  
+      
 </head>
 <body class="sidebar-light">
   <div class="container-scroller">

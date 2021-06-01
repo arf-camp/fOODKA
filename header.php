@@ -31,6 +31,10 @@ include('constant.inc.php');
         <link rel="stylesheet" href="assets/css/meanmenu.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <!--  my arf icon -->
+        <link rel="icon" type="image/jpg" href="images/myLogo.jpg">
+
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -75,7 +79,7 @@ include('constant.inc.php');
                         <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                             <div class="header-middle-right f-right">
                                 <div class="header-login">
-                                    <a href="login-register.php">
+                                    <a href="login_register.php">
                                         <div class="header-icon-style">
                                             <i class="icon-user icons"></i>
                                         </div>

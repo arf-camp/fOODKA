@@ -34,3 +34,15 @@ Day 05
 Customer Site Theme integration-Home page/Shop page/ about us /contact us /cart/checkout
 
 Fetching category/ Dish picture and name 
+
+banner page done in front and admin section
+
+
+
+day 06
+
+compeleting category checkbox
+making radio dish attributes with price
+register page 
+
+day 07

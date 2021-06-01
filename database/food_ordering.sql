@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2021 at 01:33 AM
+-- Generation Time: Jun 01, 2021 at 03:23 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -91,6 +91,30 @@ INSERT INTO `category` (`id`, `category`, `order_number`, `status`, `added_on`) 
 (2, 'Chinese', 2, 1, '2020-06-16 12:06:41'),
 (3, 'South Indian', 3, 1, '2020-06-16 12:06:59'),
 (4, 'Dessert', 4, 1, '2020-06-16 12:07:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `message` text NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `name`, `email`, `mobile`, `subject`, `message`, `added_on`) VALUES
+(2, 'ARF', 'tysonfarib@gmail.com', '52542424', 'food', 'I have eat your food and got  diarrhoea.I will see you in court', '2021-05-04 04:10:53'),
+(3, 'Md Ashequr Rahman Farib', 'asheqrahman2621@gmail.com', '01926219940', 'food', 'worst food', '2021-05-31 07:03:15');
 
 -- --------------------------------------------------------
 
@@ -256,15 +280,17 @@ CREATE TABLE `user` (
   `mobile` varchar(15) NOT NULL,
   `password` varchar(50) NOT NULL,
   `added_on` datetime NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `email_verify` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`) VALUES
-(1, 'asheq rahman', 'tretgdt@gmail.com', '0104212', '123', '2021-04-28 18:02:08', 1);
+INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`) VALUES
+(1, 'asheq rahman', 'tysonfarib@gmail.com', '0104212', '123', '2021-04-28 18:02:08', 1, 0),
+(2, 'Md Ashequr Rahman Farib', 'asheqrahman2621@gmail.com', '01926219940', '123', '2021-06-01 03:15:41', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -286,6 +312,12 @@ ALTER TABLE `banner`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -359,6 +391,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
@@ -404,7 +442,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
