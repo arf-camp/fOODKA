@@ -38,7 +38,7 @@ $rand_str=rand_str(); //calling made up function for verification random string
                                //$new_password
 
         $id=mysqli_insert_id($con);   //this function will retrieve the recent inserting id
-		$html=FRONT_SITE_PATH."verify.php?id=".$rand_str;
+		$html=FRONT_SITE_PATH."verify/".$rand_str;
 		send_email($email,$html,'Verify your email id');
 
 

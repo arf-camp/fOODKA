@@ -48,3 +48,7 @@ register page
 day 07
 
 complete login ,logout,registration with specific error and email push notification
+
+day 08
+
+completing seo friendly and calling all things from server path

@@ -11,7 +11,7 @@ include('header.php');
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="<?php echo FRONT_SITE_PATH?>shop">Shop</a></li>
                         <li class="active"> Checkout </li>
                     </ul>
                 </div>

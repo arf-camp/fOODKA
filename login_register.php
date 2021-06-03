@@ -5,7 +5,7 @@ include ("header.php");
 
 
  //if user already logged in can not make it this page
- if(!isset($_SESSION['FOOD_USER_NAME'])){}else{redirect('shop.php');} 
+ if(!isset($_SESSION['FOOD_USER_NAME'])){}else{redirect('shop');} 
 
                                        
 
@@ -39,7 +39,7 @@ include ("header.php");
      
      <div class="button-box">
                 <div class="login-toggle-btn">
-         <a href="forgot_password.php">Forgot Password?</a>
+         <a href="<?php echo FRONT_SITE_PATH?>forgot_password">Forgot Password?</a>
                  </div>
                                                     
     <button type="submit" id="login_submit">Login</button>

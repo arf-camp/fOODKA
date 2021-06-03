@@ -31,7 +31,7 @@ $cat_dish_str=implode(",",$cat_dish_arr);
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="shop.php">Shop</a></li>
+                        <li><a href="<?php echo FRONT_SITE_PATH?>shop">Shop</a></li>
                         <!-- <li class="active">Shop Grid Style </li> -->
                     </ul>
                 </div>
@@ -174,7 +174,7 @@ else { echo "Dish is not available for now";} ?>
        <h4 class="shop-sidebar-title">Shop By Categories</h4>
          <div class="shop-catigory">
 <ul id="faq"  class="category_list">
-      <li><a href="shop.php"><u>clear</u></a></li>
+      <li><a href="<?php echo FRONT_SITE_PATH?>shop"><u>clear</u></a></li>
   <?php 
       while($cat_row=mysqli_fetch_assoc($cat_res)){
         $class="selected";

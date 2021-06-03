@@ -6,7 +6,7 @@ include('header.php');
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="shop.php">Shop</a></li>
+                        <li><a href="<?php echo FRONT_SITE_PATH?>shop">Shop</a></li>
                         <li class="active">About us </li>
                     </ul>
                 </div>

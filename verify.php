@@ -8,7 +8,7 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 	mysqli_query($con,"update user set email_verify=1 where rand_str='$id'");
 	$msg="Your Email Id successfully  verified";
 }else{
-	redirect('index.php');
+	redirect(FRONT_SITE_PATH);   
 }
 ?>
 
@@ -16,7 +16,7 @@ if(isset($_GET['id']) && $_GET['id']!=''){
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="shop.php">Home</a></li>
+                        <li><a href="<?php echo FRONT_SITE_PATH?>shop">Home</a></li>
                         <li class="active"> Email Verify </li>
                     </ul>
                 </div>

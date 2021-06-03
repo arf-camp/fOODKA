@@ -7,7 +7,7 @@ include('header.php');
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="shop.php">Shop</a></li>
+                        <li><a href="<?php echo FRONT_SITE_PATH?>shop">Shop</a></li>
                         <li class="active"> Contact Us </li>
                     </ul>
                 </div>
@@ -65,7 +65,7 @@ include('header.php');
                             <h4 class="contact-title">GET IN TOUCH</h4>
                             <div class="contact-message">
                                
-                                <form id="contact-form" action="contact_us_submit.php" method="post">
+                                <form id="contact-form" action="<?php echo FRONT_SITE_PATH?>contact_us_submit" method="post">
                                     
                                     <div class="row">
                                         

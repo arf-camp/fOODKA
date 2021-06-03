@@ -64,7 +64,7 @@ include('constant.inc.php');
                             <h1 class="animated">Drink & Heathy Food</h1>
                             <h3 class="animated">Fresh Heathy and Organic.</h3>
                             <div class="slider-btn mt-90">
-                                <a class="animated" href="shop.php">Order Now</a>
+                                <a class="animated" href="<?php echo FRONT_SITE_PATH?>shop">Order Now</a>
                             </div>
                         </div>
                     </div>
