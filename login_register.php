@@ -1,5 +1,15 @@
 <?php
 include ("header.php");
+
+// send_email('tysonfarib@gmail.com','test','test');
+
+
+ //if user already logged in can not make it this page
+ if(!isset($_SESSION['FOOD_USER_NAME'])){}else{redirect('shop.php');} 
+
+                                       
+
+
 ?>
 <div class="login-register-area pt-95 pb-100">
             <div class="container">
@@ -20,23 +30,28 @@ include ("header.php");
 
     <div class="login-register-form">
    <!--     for login  -->                                    
-    <form action="#" method="post">
-                                               
+     
 
-     <input type="text" name="user-name" placeholder="Username">
-     <input type="password" name="user-password" placeholder="Password">
-                                                
+     <form method="post" id="frmLogin">
+    
+    <input type="email" name="user_email" placeholder="Email" required>
+    <input type="password" name="user_password" placeholder="Password" required>
+     
      <div class="button-box">
-                         <div class="login-toggle-btn">
-                    <a href="#">Forgot Password?</a>
-                          </div>
-        
-        <button type="submit"><span>Login</span></button>
-                                    
-     </div>
-                                           
-    </form>
-                   </div>
+                <div class="login-toggle-btn">
+         <a href="forgot_password.php">Forgot Password?</a>
+                 </div>
+                                                    
+    <button type="submit" id="login_submit">Login</button>
+    <input type="hidden" name="type" value="login"/>
+    <div id="form_login_msg" class="success_field"></div>
+    
+
+    </div>
+  
+
+  </form>
+      </div>
                                     
 
                                     </div>

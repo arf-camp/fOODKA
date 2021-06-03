@@ -229,7 +229,7 @@ else { echo "Dish is not available for now";} ?>
 <!-- for checkbox category functionality -->
 
 <form method="get" id="frmCatDish">
-            <input type="textbox" name="cat_dish" id="cat_dish" value='<?php echo $cat_dish?>'/>
+            <input type="hidden" name="cat_dish" id="cat_dish" value='<?php echo $cat_dish?>'/>
         </form>
 
             <script>

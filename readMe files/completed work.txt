@@ -46,3 +46,5 @@ making radio dish attributes with price
 register page 
 
 day 07
+
+complete login ,logout,registration with specific error and email push notification

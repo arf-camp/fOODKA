@@ -28,3 +28,38 @@ function redirect($link){
 	<?php
 	die();
 }
+
+
+function send_email($email,$html,$subject){
+	$mail=new PHPMailer(true);
+	$mail->isSMTP();
+	$mail->Host="smtp.gmail.com";
+	$mail->Port=587;
+	$mail->SMTPSecure="tls";
+	$mail->SMTPAuth=true;
+	$mail->Username="arfcampfakeid@gmail.com";      //use your company mail
+	$mail->Password="arf@test";                    //use your company mail password
+	$mail->SetFrom("arfcampfakeid@gmail.com");    //use your company mail
+	$mail->addAddress($email);
+	$mail->IsHTML(true);
+	$mail->Subject=$subject;
+	$mail->Body=$html;
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if($mail->send()){
+		//echo "done";
+	}else{
+		//echo "Error occur";
+	}
+}
+
+function rand_str(){
+	$str=str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+	return $str=substr($str,0,15); //from 0 to 15 i need a that suffle string
+	
+}
+
+?>

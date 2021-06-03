@@ -50,17 +50,19 @@ include('constant.inc.php');
                         </div>
                         <div class="col-lg-8 col-md-8 col-12 col-sm-8">
                             <div class="account-curr-lang-wrap f-right">
+                                <?php
+                                if(isset($_SESSION['FOOD_USER_NAME'])){
+                                ?>
                                 <ul>
-                                    
-                                    
-                                    <li class="top-hover"><a href="#">Setting  <i class="ion-chevron-down"></i></a>
+                                    <li class="top-hover"><a href="#"><?php echo "Welcome ".$_SESSION['FOOD_USER_NAME'];?>  <i class="ion-chevron-down"></i></a>
                                         <ul>
-                                             <li><a href="profile.php">Profile  </a></li>
-                                             <li><a href="order_history.php">Order History</a></li>
-                                             <li><a href="logout.php">Logout</a></li>
+                                            <li><a href="profile.php">Profile  </a></li>
+                                            <li><a href="order_history.php">Order History</a></li>
+                                            <li><a href="logout.php">Logout</a></li>
                                         </ul>
                                     </li>
                                 </ul>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -79,6 +81,16 @@ include('constant.inc.php');
                         <div class="col-lg-9 col-md-8 col-12 col-sm-8">
                             <div class="header-middle-right f-right">
                                 <div class="header-login">
+                                    
+            <!--      if we are not login then show the icon -->
+
+
+                                  <?php
+                                    if(!isset($_SESSION['FOOD_USER_NAME'])){
+                                        ?>
+
+
+
                                     <a href="login_register.php">
                                         <div class="header-icon-style">
                                             <i class="icon-user icons"></i>
@@ -87,6 +99,14 @@ include('constant.inc.php');
                                             <p>Register <br> or <span>Sign in</span></p>
                                         </div>
                                     </a>
+
+
+                                        <?php
+                                            }
+                                            ?>
+
+
+
                                 </div>
                                 <div class="header-wishlist">
                                    &nbsp;
