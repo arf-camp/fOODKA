@@ -5322,7 +5322,7 @@ h5.panel-title span {
     height:12px;
 }
 
-#dish_detail .dish_radio{
+ .dish_radio{
     width: 16px;
     height: 12px;
     margin-right: 5px
@@ -5338,3 +5338,5 @@ h5.panel-title span {
     margin-top: 10px;
     color:red;
 }
+.product-sorting-wrapper{width:100%;}
+.product-sorting-wrapper .product-show{float:right;}

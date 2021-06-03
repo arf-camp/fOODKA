@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 02:09 PM
+-- Generation Time: Jun 04, 2021 at 12:24 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -65,8 +65,8 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `image`, `heading`, `sub_heading`, `link`, `link_txt`, `added_on`, `status`, `order_number`) VALUES
-(3, '3369_546847873_banner-4.jpg', 'EAT FOOD FROM US ', 'AND GO TO BATHROOM ALL THE DAY', 'shop.php', 'ORDER NOW', '2021-05-04 01:12:11', 1, 1),
-(4, '2472_662516275_banner-3.jpg', 'EAT THE WORST FOOD FROM US ', 'AND GO TO BATHROOM ALL THE DAY', 'shop.php', 'SHOP NOW', '2021-05-04 01:13:25', 1, 2);
+(3, '3369_546847873_banner-4.jpg', 'EAT FOOD FROM US ', 'AND GO TO BATHROOM ALL THE DAY', 'shop', 'ORDER NOW', '2021-05-04 01:12:11', 1, 1),
+(4, '2068_chinese.jpg', 'EAT THE WORST FOOD OF THE WORLD', 'AND GO TO BATHROOM ALL THE DAY', 'shop', 'SHOP NOW', '2021-05-04 01:13:25', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,8 @@ INSERT INTO `category` (`id`, `category`, `order_number`, `status`, `added_on`) 
 (1, 'Drink', 1, 1, '2020-06-16 12:06:33'),
 (2, 'Chinese', 2, 1, '2020-06-16 12:06:41'),
 (3, 'South Indian', 3, 1, '2020-06-16 12:06:59'),
-(4, 'Dessert', 4, 1, '2020-06-16 12:07:18');
+(4, 'Dessert', 4, 1, '2020-06-16 12:07:18'),
+(6, 'murgh', 3, 1, '2021-06-03 08:23:24');
 
 -- --------------------------------------------------------
 
@@ -174,6 +175,7 @@ CREATE TABLE `dish` (
   `dish` varchar(100) NOT NULL,
   `dish_detail` text NOT NULL,
   `image` varchar(100) NOT NULL,
+  `type` enum('veg','non-veg') NOT NULL,
   `status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -182,13 +184,14 @@ CREATE TABLE `dish` (
 -- Dumping data for table `dish`
 --
 
-INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `status`, `added_on`) VALUES
-(1, 1, 'MOJO', 'cold drink test', 'Mojo-Soft-Drink-1-Liter.jpg', 1, '2021-04-29 19:09:13'),
-(2, 2, 'Noodles', 'indian', '836724175_Vegetarian-Chowmein-Recipe-Step-By-Step-Instructions.jpg', 1, '2021-04-30 12:53:14'),
-(3, 4, 'roshogolla', 'kolkatan', '467_rosh2.jpg', 1, '2021-04-30 02:02:17'),
-(4, 1, '7 up ', 'cold drinks', '7 up.jpg', 1, '2021-04-30 02:35:29'),
-(5, 2, 'Noodles chinese', 'sold by per plate', '834_chinese.jpg', 1, '2021-05-01 02:00:30'),
-(6, 4, 'Mishti doi', 'tangail', '918_mishti-doi-recipe.jpg', 1, '2021-05-01 04:08:27');
+INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `type`, `status`, `added_on`) VALUES
+(1, 1, 'MOJO', 'cold drink test', 'Mojo-Soft-Drink-1-Liter.jpg', 'non-veg', 1, '2021-04-29 19:09:13'),
+(2, 2, 'Noodles', 'indian', '836724175_Vegetarian-Chowmein-Recipe-Step-By-Step-Instructions.jpg', 'veg', 1, '2021-04-30 12:53:14'),
+(3, 4, 'roshogolla', 'kolkatan', '467_rosh2.jpg', 'veg', 1, '2021-04-30 02:02:17'),
+(4, 1, '7 up ', 'cold drinks', '7 up.jpg', 'veg', 1, '2021-04-30 02:35:29'),
+(5, 2, 'Noodles chinese', 'sold by per plate', '834_chinese.jpg', 'non-veg', 1, '2021-05-01 02:00:30'),
+(6, 4, 'Mishti doi', 'tangail', '918_mishti-doi-recipe.jpg', 'veg', 1, '2021-05-01 04:08:27'),
+(7, 6, 'Butter chicken', 'Butter Chicken or murgh makhani is a curry of chicken in a spiced tomato, butter, and cream sauce. It originated in India as a curry. It is similar to chicken tikka masala, which uses a tomato gravy', '305_butter-chicken-500x500.jpg', 'non-veg', 1, '2021-06-03 08:25:45');
 
 -- --------------------------------------------------------
 
@@ -219,7 +222,9 @@ INSERT INTO `dish_details` (`id`, `dish_id`, `attribute`, `price`, `status`, `ad
 (9, 2, '5 plate', 200, 1, '2021-05-01 04:04:50'),
 (10, 1, '1 litre', 70, 1, '2021-05-01 04:05:25'),
 (11, 6, 'per hari ', 70, 1, '2021-05-01 04:08:27'),
-(12, 6, 'per kolshi', 120, 1, '2021-05-01 04:08:27');
+(12, 6, 'per kolshi', 120, 1, '2021-05-01 04:08:27'),
+(13, 7, 'half', 202, 1, '2021-06-03 08:25:45'),
+(14, 7, 'full', 275, 1, '2021-06-03 08:25:45');
 
 -- --------------------------------------------------------
 
@@ -290,7 +295,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`) VALUES
-(1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-06-03 01:28:14', 1, 1, 'vnqraihcnpyejjw');
+(1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-06-03 01:28:14', 1, 1, 'vnqraihcnpyejjw'),
+(2, 'Md Ashequr Rahman Farib', 'asheqrahman2621@gmail.com', '01926219940', 'asd', '2021-06-03 06:16:31', 1, 0, 'qvufchdhraplfwb');
 
 --
 -- Indexes for dumped tables
@@ -388,7 +394,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -412,13 +418,13 @@ ALTER TABLE `delivery_boy`
 -- AUTO_INCREMENT for table `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
 --
 ALTER TABLE `dish_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
@@ -442,7 +448,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

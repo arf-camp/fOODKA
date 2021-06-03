@@ -9,6 +9,7 @@ $category_id="";
 $dish="";
 $dish_detail="";
 $image="";
+$type="";
 $id="";
 $image_status='required';
 
@@ -31,6 +32,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
 	$dish=$row['dish'];
 	$dish_detail=$row['dish_detail'];
 	$image=$row['image'];
+	$type=$row['type'];
 	$image_status='';
 
 
@@ -57,6 +59,7 @@ if(isset($_POST['submit'])){
 	$category_id=get_safe_value($_POST['category_id']);
 	$dish=get_safe_value($_POST['dish']);
 	$dish_detail=get_safe_value($_POST['dish_detail']);
+	$food_type=get_safe_value($_POST['type']);
 	$added_on=date('Y-m-d h:i:s');
 
 	
@@ -99,7 +102,7 @@ else{
 
 
 			
-			mysqli_query($con,"insert into dish(category_id,dish,dish_detail,status,added_on,image) values('$category_id','$dish','$dish_detail',1,'$added_on','$image')");
+			mysqli_query($con,"insert into dish(category_id,dish,dish_detail,status,added_on,image,type) values('$category_id','$dish','$dish_detail',1,'$added_on','$image','$food_type')");
 		   
 		       
                 
@@ -186,7 +189,7 @@ else{
 
                 	if($image_error==''){
 
-                $sql="update dish set category_id='$category_id', dish='$dish' , dish_detail='$dish_detail' $image_condition where id='$id'";
+                $sql="update dish set category_id='$category_id', dish='$dish' , dish_detail='$dish_detail',type='$food_type' $image_condition where id='$id'";
 				mysqli_query($con,$sql);
 
 
@@ -225,10 +228,11 @@ else{
 	}
 }
 
+//for fetching category
+$res_category=mysqli_query($con,"select * from category where status='1' order by category asc");
 
-$res_category=mysqli_query($con,"select * from category where status='1' order by category asc")
-
-
+//for dish type
+$arrType=array("veg","non-veg");
 
 ?>
 <div class="row">
@@ -246,7 +250,8 @@ $res_category=mysqli_query($con,"select * from category where status='1' order b
 						<option value="">Select Category</option>
 						<?php
 						while($row_category=mysqli_fetch_assoc($res_category)){
-							if($row_category['id']==$category_id){
+							if($row_category['id']==$category_id){    
+							                          //for edit show me the selected value
 								echo "<option value='".$row_category['id']."' selected>".$row_category['category']."</option>";
 							}else{
 								echo "<option value='".$row_category['id']."'>".$row_category['category']."</option>";
@@ -263,6 +268,28 @@ $res_category=mysqli_query($con,"select * from category where status='1' order b
                       <label for="exampleInputName1">Dish</label>
                       <input type="text" class="form-control" placeholder="dish" name="dish" required value="<?php echo $dish?>">
 					  <div class="error mt8"><?php echo $msg?></div>
+                    </div>
+
+
+                    	<div class="form-group">
+                      <label for="exampleInputName1">Type</label>
+                      <select class="form-control" name="type" required>
+						<option value="">Select Type</option>
+						<?php 
+						foreach($arrType as $list){ 
+							if($list==$type){ //for edit show me the selected value
+
+						  echo "<option value='$list' selected>".strtoupper($list)."</option>";
+							 
+							 }
+
+							else{
+								echo "<option value='$list'>".strtoupper($list)."</option>";
+							}
+						}
+						?>
+					  </select>
+					  
                     </div>
 
 

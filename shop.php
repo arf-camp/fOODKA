@@ -5,7 +5,11 @@ include('header.php');
 
 $cat_dish='';
 $cat_dish_arr=array();
-if(isset($_GET['cat_dish'])){
+
+$type='';
+
+if(isset($_GET['cat_dish']))
+{
     $cat_dish=$_GET['cat_dish'];
 
 // what we found through url we explode it by php explode and remove empty array by array filter
@@ -18,9 +22,17 @@ $cat_dish_arr=array_filter(explode(':',$cat_dish));
 $cat_dish_str=implode(",",$cat_dish_arr);
 
 
-
-
 }
+
+//for veg non-veg filteration
+
+if(isset($_GET['type'])){
+  $type=get_safe_value($_GET['type']);
+}
+
+$arrType=array("veg","non-veg","both");
+
+
 
 
  ?>
@@ -50,6 +62,48 @@ $cat_dish_str=implode(",",$cat_dish_arr);
                         <!-- <div class="banner-area pb-30">
                             <a href="product-details.html"><img alt="" src="assets/img/banner/banner-49.jpg"></a>
                         </div> -->
+
+<!-- veg non veg filteration -->
+<div class="shop-topbar-wrapper">
+                            <div class="product-sorting-wrapper">
+                                <div class="product-show shorting-style ">
+                <?php
+                foreach($arrType as $list){
+                  $type_radio_selected='';
+                  if($list==$type){   //if we get type value from url and it is similar to our array value,then it means radio button will selected for that value
+                    $type_radio_selected="checked='checked'";
+                  }
+                  ?>
+                  
+
+<?php echo strtoupper($list)?> <input type="radio" class="dish_radio" <?php echo $type_radio_selected?> name="type" value="<?php echo $list?>" onclick="setFoodType('<?php echo $list?>')"/>&nbsp;
+                  <?php
+                
+                                        }                 
+                ?>                
+                   
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <?php 
 
    $cat_id=0;
@@ -66,13 +120,22 @@ $product_sql="select * from dish where status=1";
                       //       }
 
 
+// for category filterization
 
- if(isset($_GET['cat_dish']) && $_GET['cat_dish']!='')
- { 
+ if($cat_dish!='')
+ {   
+    
+     $product_sql.=" and category_id in ($cat_dish_str) ";
+  }
 
-  $product_sql.=" and category_id in ($cat_dish_str) ";
-          
- }
+// for veg/non-veg  filterization
+  if($type!='' && $type!='both')
+   {   
+                               
+   $product_sql.=" and type ='$type' ";
+   
+   }
+
 
    $product_sql.=" order by dish desc";
  $product_res=mysqli_query($con,$product_sql);
@@ -109,8 +172,20 @@ $product_sql="select * from dish where status=1";
       <div class="product-content" id="dish_detail">
                
                <h4>
-         <a href="javascript:void(0)"><?php echo $product_row['dish']?></a>
-                </h4>
+
+                       <?php      
+                                   //veg /non-veg icon
+                            if($product_row['type']=='veg'){
+                              echo "<img src='assets/img/icon-img/veg.png'/>";
+                            }else{
+                              echo "<img src='assets/img/icon-img/non-veg.png'/>";
+                            }
+                            ?>
+
+
+         <a href="javascript:void(0)"><?php echo $product_row['dish']?></a>  <!-- //dish name -->
+              
+              </h4>
 
 
 <!-- //dish attributes -->
@@ -230,9 +305,13 @@ else { echo "Dish is not available for now";} ?>
 
 <form method="get" id="frmCatDish">
             <input type="hidden" name="cat_dish" id="cat_dish" value='<?php echo $cat_dish?>'/>
+            <input type="hidden" name="type" id="type" value='<?php echo $type?>'/>
         </form>
 
             <script>
+            
+
+// category checkbox
             function set_checkbox(id){
                 var cat_dish=jQuery('#cat_dish').val();
               
@@ -249,6 +328,27 @@ else { echo "Dish is not available for now";} ?>
                 jQuery('#cat_dish').val(cat_dish);
                 jQuery('#frmCatDish')[0].submit();
             }
+
+
+
+// for veg non veg filteration
+
+
+function setFoodType(type){
+        jQuery('#type').val(type);
+        jQuery('#frmCatDish')[0].submit();
+      }
+
+
+
+
+
+
+
+
+
+
+
         </script>
 
 
