@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 03:23 PM
+-- Generation Time: Jun 03, 2021 at 02:09 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -281,16 +281,16 @@ CREATE TABLE `user` (
   `password` varchar(50) NOT NULL,
   `added_on` datetime NOT NULL,
   `status` int(11) NOT NULL,
-  `email_verify` int(11) NOT NULL
+  `email_verify` int(11) NOT NULL,
+  `rand_str` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`) VALUES
-(1, 'asheq rahman', 'tysonfarib@gmail.com', '0104212', '123', '2021-04-28 18:02:08', 1, 0),
-(2, 'Md Ashequr Rahman Farib', 'asheqrahman2621@gmail.com', '01926219940', '123', '2021-06-01 03:15:41', 0, 0);
+INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`) VALUES
+(1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-06-03 01:28:14', 1, 1, 'vnqraihcnpyejjw');
 
 --
 -- Indexes for dumped tables
@@ -442,7 +442,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
