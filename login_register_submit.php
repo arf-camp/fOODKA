@@ -77,6 +77,19 @@ if($loginpass==$password){
 					$_SESSION['FOOD_USER_NAME']=$row['name'];
 					$arr=array('status'=>'success','msg'=>'');
 
+                    // after login if user have cart session then pass the data to function......
+
+                 if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+						foreach($_SESSION['cart'] as $key=>$val){
+							manageUserCart($_SESSION['FOOD_USER_ID'],$val['qty'],$key);
+						}
+					}
+
+
+
+
+
+
  } else{$arr=array('status'=>'error','msg'=>'Please enter correct password'); }
 
 // } else{$arr=array('status'=>'error','msg'=>'Please enter correct password'); }

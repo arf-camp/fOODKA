@@ -57,3 +57,8 @@ completing seo friendly and calling all things from server path
 day 09
 
 completing filterization at front and admin section with icon
+
+day 10
+
+making dish cart database
+completing  add to cart 

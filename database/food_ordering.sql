@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2021 at 12:24 AM
+-- Generation Time: Jun 05, 2021 at 12:22 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -196,6 +196,28 @@ INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `type`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dish_cart`
+--
+
+CREATE TABLE `dish_cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `dish_detail_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dish_cart`
+--
+
+INSERT INTO `dish_cart` (`id`, `user_id`, `dish_detail_id`, `qty`, `added_on`) VALUES
+(1, 1, 6, 3, '2021-06-04 09:13:54'),
+(2, 1, 8, 2, '2021-06-04 09:14:36');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `dish_details`
 --
 
@@ -345,6 +367,12 @@ ALTER TABLE `dish`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `dish_cart`
+--
+ALTER TABLE `dish_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `dish_details`
 --
 ALTER TABLE `dish_details`
@@ -419,6 +447,12 @@ ALTER TABLE `delivery_boy`
 --
 ALTER TABLE `dish`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `dish_cart`
+--
+ALTER TABLE `dish_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dish_details`

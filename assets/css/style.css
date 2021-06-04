@@ -5340,3 +5340,21 @@ h5.panel-title span {
 }
 .product-sorting-wrapper{width:100%;}
 .product-sorting-wrapper .product-show{float:right;}
+
+.product-price-wrapper .select{
+	height: 24px;
+    width: 50%;
+    border: 1px solid #626262;
+    margin-top: 7px;
+}
+
+.product-price-wrapper  .cart_icon{
+	font-size: 25px;
+    margin-left: 5px;
+	cursor:pointer;
+}
+
+.cart_already_added{
+	font-size:10px;
+	color:#e02c2b !important;
+}

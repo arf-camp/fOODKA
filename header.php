@@ -5,7 +5,7 @@ include('database.inc.php');
 include('function.inc.php');
 include('constant.inc.php');
 
-
+$cartArr=getUserFullCart();
 
 
 
@@ -73,7 +73,7 @@ include('constant.inc.php');
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                             <div class="logo">
-                                <a href="<?php echo FRONT_SITE_PATH?>index">
+                                <a href="<?php echo FRONT_SITE_PATH?>">
                                     <img alt="" src="assets/img/logo/front logo.jpg">
                                 </a>
                             </div>

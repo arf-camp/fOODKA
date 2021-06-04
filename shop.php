@@ -202,11 +202,22 @@ $dish_attr_res=mysqli_query($con,"select * from dish_details where status='1' an
   <?php
      while($dish_attr_row=mysqli_fetch_assoc($dish_attr_res))
      {
-        echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' value='".$dish_attr_row['id']."'/>";
+        echo "<input type='radio' class='dish_radio' name='radio_".$product_row['id']."' id='radio_".$product_row['id']."' value='".$dish_attr_row['id']."'/>";
         echo $dish_attr_row['attribute'];
         echo "&nbsp;";
         echo "<span class='price'>(".$dish_attr_row['price'].")</span>";
-        echo "&nbsp;&nbsp;&nbsp;";
+        
+        //added items
+        $added_msg="";
+        if(array_key_exists($dish_attr_row['id'],$cartArr))
+        {
+                   
+                   $added_qty=getUserFullCart($dish_attr_row['id']);
+                   $added_msg="(Added -$added_qty)";
+         }
+            echo " <span class='cart_already_added' id='shop_added_msg_".$dish_attr_row['id']."'>".$added_msg."</span>";
+                              
+                              echo "&nbsp;&nbsp;&nbsp;";
                                                         
       }
              
@@ -215,6 +226,24 @@ $dish_attr_res=mysqli_query($con,"select * from dish_details where status='1' an
 
 
  </div>
+ 
+                <!--  shopping icon and dropdown -->
+
+<div class="product-price-wrapper">
+                            
+            <select class="select" id="qty<?php echo $product_row['id']?>">
+                              
+            <option value="0">Qty</option>
+                              
+                  <?php
+                        for($i=1;$i<=20;$i++){
+                        echo "<option>$i</option>";
+                              }
+                    ?>
+            </select>
+                            
+        <i class="fa fa-cart-plus cart_icon" aria-hidden="true" onclick="add_to_cart('<?php echo $product_row['id']?>','add')"></i>
+</div>
 
 
 
@@ -308,48 +337,7 @@ else { echo "Dish is not available for now";} ?>
             <input type="hidden" name="type" id="type" value='<?php echo $type?>'/>
         </form>
 
-            <script>
-            
-
-// category checkbox
-            function set_checkbox(id){
-                var cat_dish=jQuery('#cat_dish').val();
-              
-                var check=cat_dish.search(":"+id);    //searching value
-                if(check!='-1'){
-                    //for uncheck if we found value then remove it on url(replace with blank)
-                    cat_dish=cat_dish.replace(":"+id,'');  
-                }else{
-                    cat_dish=cat_dish+":"+id;   //otherwise adding  
-                }
-
-
-
-                jQuery('#cat_dish').val(cat_dish);
-                jQuery('#frmCatDish')[0].submit();
-            }
-
-
-
-// for veg non veg filteration
-
-
-function setFoodType(type){
-        jQuery('#type').val(type);
-        jQuery('#frmCatDish')[0].submit();
-      }
-
-
-
-
-
-
-
-
-
-
-
-        </script>
+        
 
 
 

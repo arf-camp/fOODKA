@@ -96,3 +96,86 @@ jQuery('#frmForgotPassword').on('submit',function(e){
 	});
 	e.preventDefault();
 });	
+
+
+
+
+// category checkbox
+            function set_checkbox(id){
+                var cat_dish=jQuery('#cat_dish').val();
+              
+                var check=cat_dish.search(":"+id);    //searching value
+                if(check!='-1'){
+                    //for uncheck if we found value then remove it on url(replace with blank)
+                    cat_dish=cat_dish.replace(":"+id,'');  
+                }else{
+                    cat_dish=cat_dish+":"+id;   //otherwise adding  
+                }
+
+
+
+                jQuery('#cat_dish').val(cat_dish);
+                jQuery('#frmCatDish')[0].submit();
+            }
+
+
+
+// for veg non veg filteration
+
+
+function setFoodType(type){
+        jQuery('#type').val(type);
+        jQuery('#frmCatDish')[0].submit();
+      }
+
+
+
+// add to cart
+
+function add_to_cart(id,type){
+       // alert(id);
+
+var qty=jQuery('#qty'+id).val();  //gaining quantity value
+// var attr=jQuery('#radio_'+id).val();  //gaining same radio button use in inspect (gaining dish id)
+
+
+var attr=jQuery('input[name="radio_'+id+'"]:checked').val(); //gaining dish_details (means atrribute value) id
+
+var is_attr_checked='';
+	if(typeof attr=== 'undefined'){
+		is_attr_checked='no';
+	}
+	if(qty>0 && is_attr_checked!='no'){ //if user selected qty and attribute then success 
+
+
+
+
+jQuery.ajax({
+			
+			url:FRONT_SITE_PATH+'manage_cart',
+			type:'post',
+			data:'qty='+qty+'&attt='+attr+'&type='+type,
+			success:function(result){
+
+
+				// alert(result);                           // CDN is on footer link
+				swal("Congratulation!", "Dish added successfully", "success");  //sweet alert js
+
+				jQuery('#shop_added_msg_'+attr).html('(Added -'+qty+')');    
+			}
+		});
+
+
+}else{    // other wise error
+		swal("Error", "Please select qty and dish item", "error");
+	}
+
+
+
+
+
+
+
+
+
+}

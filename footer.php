@@ -38,6 +38,8 @@
         var FRONT_SITE_PATH="<?php echo FRONT_SITE_PATH?>";
         </script>
         <script src="<?php echo FRONT_SITE_PATH?>assets/js/custom.js"></script>
+         <!--  success mssg CDN sweet alert js -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </body>
 
 
