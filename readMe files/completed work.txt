@@ -62,3 +62,7 @@ day 10
 
 making dish cart database
 completing  add to cart 
+
+day 11
+
+completing top menu add to cart (total price ,details, reduction)

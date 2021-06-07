@@ -16,7 +16,7 @@
 
 // session_start();
 // echo '<pre>';
-// // unset($_SESSION['cart']);
+// unset($_SESSION['cart']);
 // print_r($_SESSION['cart']);
 
 

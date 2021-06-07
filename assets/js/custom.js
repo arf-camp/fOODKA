@@ -157,11 +157,28 @@ jQuery.ajax({
 			data:'qty='+qty+'&attt='+attr+'&type='+type,
 			success:function(result){
 
-
-				// alert(result);                           // CDN is on footer link
+                 var data=jQuery.parseJSON(result); //from manage_cart json will give us
+				// alert(result);                          
+				 // CDN is on footer link
 				swal("Congratulation!", "Dish added successfully", "success");  //sweet alert js
 
-				jQuery('#shop_added_msg_'+attr).html('(Added -'+qty+')');    
+				jQuery('#shop_added_msg_'+attr).html('(Added -'+qty+')');   
+					
+
+				jQuery('#totalCartDish').html(data.totalCartDish);
+				jQuery('#totalPrice').html(data.totalPrice+' BDT');
+				var tp1=data.totalPrice;
+				if(data.totalCartDish==1){
+					var tp=qty*data.price;
+					var html='<div class="shopping-cart-content"><ul id="cart_ul"><li class="single-shopping-cart" id="attr_'+attr+'"><div class="shopping-cart-img"><a href="javascript:void(0)"><img alt="" src="'+SITE_DISH_IMAGE+data.image+'"></a></div><div class="shopping-cart-title"><h4><a href="javascript:void(0)">'+data.dish+'</a></h4><h6>Qty: '+qty+'</h6><span>'+tp+' BDT</span></div><div class="shopping-cart-delete"><a href="javascript:void(0)" onclick=delete_cart("'+attr+'")><i class="ion ion-close"></i></a></div></li></ul><h4>Total : <span class="shop-total" id="shopTotal">'+tp+' BDT</span></h4><div class="shopping-cart-btn"><a href="cart">view cart</a><a href="checkout">checkout</a></div></div>';	
+					jQuery('.header-cart').append(html);
+				}else{
+					var tp=qty*data.price;
+					jQuery("#attr_"+attr).remove();
+					var html='<li class="single-shopping-cart" id="attr_'+attr+'"><div class="shopping-cart-img"><a href="#"><img alt="" src="'+SITE_DISH_IMAGE+data.image+'"></a></div><div class="shopping-cart-title"><h4><a href="javascript:void(0)">'+data.dish+'</a></h4><h6>Qty: '+qty+'</h6><span>'+tp+' BDT</span></div><div class="shopping-cart-delete"><a href="javascript:void(0)" onclick=delete_cart("'+attr+'")><i class="ion ion-close"></i></a></div></li>';
+					jQuery('#cart_ul').append(html);
+					jQuery('#shopTotal').html(tp1+ 'BDT');
+				}
 			}
 		});
 
@@ -173,9 +190,37 @@ jQuery.ajax({
 
 
 
-
-
-
-
-
 }
+
+
+
+//remove cart
+
+
+function delete_cart(id){
+	jQuery.ajax({
+		url:FRONT_SITE_PATH+'manage_cart',
+		type:'post',
+		data:'attt='+id+'&type=delete',
+		success:function(result){
+			var data=jQuery.parseJSON(result);
+			//swal("Congratulation!", "Dish added successfully", "success");
+			jQuery('#totalCartDish').html(data.totalCartDish);
+			jQuery('#shop_added_msg_'+id).html('');
+			
+			if(data.totalCartDish==0){
+				jQuery('.shopping-cart-content').remove();
+				jQuery('#totalPrice').html('');
+			}else{
+				var tp1=data.totalPrice;
+				jQuery('#shopTotal').html(tp1+ 'BDT');
+				jQuery('#attr_'+id).remove();
+				jQuery('#totalPrice').html(data.totalPrice+' BDT');
+			}
+			
+			
+		}
+	});
+}
+
+

@@ -7,19 +7,46 @@ include('constant.inc.php');
 
 // prx($_POST);
 $attr=get_safe_value($_POST['attt']);
-$qty=get_safe_value($_POST['qty']);
 $type=get_safe_value($_POST['type']);
 
 if($type=='add'){
+
+	$qty=get_safe_value($_POST['qty']);
+
 	if(isset($_SESSION['FOOD_USER_ID'])){ //if login
 		$uid=$_SESSION['FOOD_USER_ID'];
 		manageUserCart($uid,$qty,$attr); // passing details to function
 	}else{ //if not login
 		$_SESSION['cart'][$attr]['qty']=$qty;
 	}
+
+    $getUserFullCart=getUserFullCart();
+	$totalPrice=0;
+	foreach($getUserFullCart as $list){
+		$totalPrice=$totalPrice+($list['qty']*$list['price']);
+	}
+	
+	$getDishDetail=getDishDetailById($attr);
+	$price=$getDishDetail['price'];
+	$dish=$getDishDetail['dish'];
+	$image=$getDishDetail['image'];
+	
+	$totaDish=count(getUserFullCart());
+	$arr=array('totalCartDish'=>$totaDish,'totalPrice'=>$totalPrice,'price'=>$price,'dish'=>$dish,'image'=>$image);
+	echo json_encode($arr);
 }
 
-
+if($type=='delete'){
+	removeDishFromCartByid($attr);
+	$getUserFullCart=getUserFullCart();
+	$totaDish=count($getUserFullCart);
+	$totalPrice=0;
+	foreach($getUserFullCart as $list){
+		$totalPrice=$totalPrice+($list['qty']*$list['price']);
+	}
+	$arr=array('totalCartDish'=>$totaDish,'totalPrice'=>$totalPrice);
+	echo json_encode($arr);
+}
 
 
 ?>

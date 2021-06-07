@@ -6,8 +6,14 @@ include('function.inc.php');
 include('constant.inc.php');
 
 $cartArr=getUserFullCart();
+$totalCartDish=count($cartArr); //counting my cart product
 
 
+//for finding total price
+$totalPrice=0;
+foreach($cartArr as $list){
+    $totalPrice=$totalPrice+($list['qty']*$list['price']);
+}
 
  ?>
 
@@ -111,55 +117,57 @@ $cartArr=getUserFullCart();
                                 <div class="header-wishlist">
                                    &nbsp;
                                 </div>
+                                
+
                                 <div class="header-cart">
                                     <a href="#">
                                         <div class="header-icon-style">
                                             <i class="icon-handbag icons"></i>
-                                            <span class="count-style">0</span>
+                                            <span class="count-style" id="totalCartDish"><?php echo $totalCartDish?></span>
                                         </div>
                                         <div class="cart-text">
                                             <span class="digit">My Cart</span>
-                                            <span class="cart-digit-bold">$209.00</span>
+                                            <span class="cart-digit-bold" id="totalPrice">
+                                            <?php 
+                                            if($totalPrice!=0){
+                                                echo $totalPrice.' BDT';
+                                            }
+                                            ?></span>
                                         </div>
                                     </a>
-                                   <!--  <div class="shopping-cart-content">
-                                        <ul>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="#">Phantom Remote </a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
-                                            <li class="single-shopping-cart">
-                                                <div class="shopping-cart-img">
-                                                    <a href="#"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="#">Phantom Remote</a></h4>
-                                                    <h6>Qty: 02</h6>
-                                                    <span>$260.00</span>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="ion ion-close"></i></a>
-                                                </div>
-                                            </li>
+                                    <?php if($totalPrice!=0){?>
+                                    <div class="shopping-cart-content">
+                                        <ul id="cart_ul">
+                                            <?php foreach($cartArr as $key=>$list){ ?>
+                                                <li class="single-shopping-cart" id="attr_<?php echo $key?>">
+                                                    <div class="shopping-cart-img">
+                                                        <a href="javascript:void(0)"><img alt="" src="<?php echo SITE_DISH_IMAGE.$list['image']?>"></a>
+                                                    </div>
+                                                    <div class="shopping-cart-title">
+                                                        <h4><a href="javascript:void(0)">
+                                                        <?php echo $list['dish']?>
+                                                        </a></h4>
+                                                        <h6>Qty: <?php echo $list['qty']?></h6>
+                                                        <span><?php echo 
+                                                        $list['qty']*$list['price'];?> BDT</span>
+                                                    </div>
+                                                    <div class="shopping-cart-delete">
+                                                        <a href="javascript:void(0)" onclick="delete_cart('<?php echo $key?>')"><i class="ion ion-close"></i></a>
+                                                    </div>
+                                                </li>
+                                            <?php } ?>
                                         </ul>
                                         <div class="shopping-cart-total">
-                                            <h4>Shipping : <span>$20.00</span></h4>
-                                            <h4>Total : <span class="shop-total">$260.00</span></h4>
+                                            <h4>Total : <span class="shop-total" id="shopTotal">
+                                            <?php echo $totalPrice?> BDT
+                                            </span></h4>
                                         </div>
                                         <div class="shopping-cart-btn">
-                                            <a href="cart-page.html">view cart</a>
-                                            <a href="checkout.html">checkout</a>
+                                            <a href="<?php echo FRONT_SITE_PATH?>cart">view cart</a>
+                                            <a href="<?php echo FRONT_SITE_PATH?>checkout">checkout</a>
                                         </div>
-                                    </div> -->
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
