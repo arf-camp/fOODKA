@@ -60,7 +60,10 @@ jQuery('#frmLogin').on('submit',function(e){
 			if(data.status=='error'){
 				jQuery('#form_login_msg').html(data.msg);
 			}
-			if(data.status=='success'){
+			var is_checkout=jQuery('#is_checkout').val();
+			if(is_checkout=='yes'){
+				window.location.href='checkout';
+			}else if(data.status=='success'){
 				//jQuery('#form_login_msg').html(data.msg);
 				window.location.href='shop';
 			}
@@ -197,27 +200,35 @@ jQuery.ajax({
 //remove cart
 
 
-function delete_cart(id){
+function delete_cart(id,is_type){
 	jQuery.ajax({
 		url:FRONT_SITE_PATH+'manage_cart',
 		type:'post',
 		data:'attt='+id+'&type=delete',
 		success:function(result){
-			var data=jQuery.parseJSON(result);
-			//swal("Congratulation!", "Dish added successfully", "success");
-			jQuery('#totalCartDish').html(data.totalCartDish);
-			jQuery('#shop_added_msg_'+id).html('');
 			
-			if(data.totalCartDish==0){
-				jQuery('.shopping-cart-content').remove();
-				jQuery('#totalPrice').html('');
-			}else{
-				var tp1=data.totalPrice;
-				jQuery('#shopTotal').html(tp1+ 'BDT');
-				jQuery('#attr_'+id).remove();
-				jQuery('#totalPrice').html(data.totalPrice+' BDT');
+			if(is_type=='load'){ //for cart delete page
+
+				window.location.href=window.location.href;
 			}
+
+			else{
+
+				var data=jQuery.parseJSON(result);
 			
+				jQuery('#totalCartDish').html(data.totalCartDish);
+				jQuery('#shop_added_msg_'+id).html('');
+				
+				if(data.totalCartDish==0){
+					jQuery('.shopping-cart-content').remove();
+					jQuery('#totalPrice').html('');
+				}else{
+					var tp1=data.totalPrice;
+					jQuery('#shopTotal').html(tp1+ 'BDT');
+					jQuery('#attr_'+id).remove();
+					jQuery('#totalPrice').html(data.totalPrice+' BDT');
+				}
+			}
 			
 		}
 	});

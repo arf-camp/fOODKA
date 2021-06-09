@@ -5,6 +5,25 @@ include('database.inc.php');
 include('function.inc.php');
 include('constant.inc.php');
 
+//for cart page (update button)
+if(isset($_POST['update_cart'])){
+    foreach($_POST['qty'] as $key=>$val){
+        if(isset($_SESSION['FOOD_USER_ID'])){
+            if($val[0]==0){//if update value is zero then delete
+                mysqli_query($con,"delete from dish_cart where dish_detail_id='$key' and user_id=".$_SESSION['FOOD_USER_ID']);
+            }else{
+                mysqli_query($con,"update dish_cart set qty='".$val[0]."' where dish_detail_id='$key' and user_id=".$_SESSION['FOOD_USER_ID']); 
+            }
+        }else{
+            if($val[0]==0){ //if update value is zero then unset the sesssion
+                unset($_SESSION['cart'][$key]['qty']);
+            }else{
+                $_SESSION['cart'][$key]['qty']=$val[0]; 
+            }
+        }
+    }
+}
+
 $cartArr=getUserFullCart();
 $totalCartDish=count($cartArr); //counting my cart product
 
@@ -14,6 +33,7 @@ $totalPrice=0;
 foreach($cartArr as $list){
     $totalPrice=$totalPrice+($list['qty']*$list['price']);
 }
+
 
  ?>
 

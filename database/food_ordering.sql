@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2021 at 12:22 AM
+-- Generation Time: Jun 09, 2021 at 06:45 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -207,14 +207,6 @@ CREATE TABLE `dish_cart` (
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `dish_cart`
---
-
-INSERT INTO `dish_cart` (`id`, `user_id`, `dish_detail_id`, `qty`, `added_on`) VALUES
-(1, 1, 6, 3, '2021-06-04 09:13:54'),
-(2, 1, 8, 2, '2021-06-04 09:14:36');
-
 -- --------------------------------------------------------
 
 --
@@ -259,7 +251,7 @@ CREATE TABLE `order_detail` (
   `order_id` int(11) NOT NULL,
   `dish_details_id` int(11) NOT NULL,
   `price` float NOT NULL,
-  `gst` float NOT NULL
+  `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -276,9 +268,9 @@ CREATE TABLE `order_master` (
   `mobile` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `total_price` float NOT NULL,
-  `gst` float NOT NULL,
+  `zipcode` varchar(10) NOT NULL,
   `delivery_boy_id` int(11) NOT NULL,
-  `payment_status` int(11) NOT NULL,
+  `payment_status` varchar(20) NOT NULL,
   `order_status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -293,6 +285,13 @@ CREATE TABLE `order_status` (
   `id` int(11) NOT NULL,
   `order_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_status`
+--
+
+INSERT INTO `order_status` (`id`, `order_status`) VALUES
+(1, 'pending');
 
 -- --------------------------------------------------------
 
@@ -452,7 +451,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -476,7 +475,7 @@ ALTER TABLE `order_master`
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
