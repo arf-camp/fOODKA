@@ -70,3 +70,7 @@ completing top menu add to cart (total price ,details, reduction)
 day 12
 
 completing cart and and checkout page (also database update)
+
+day 13
+
+completing user profile page,change password and creating admin order master
