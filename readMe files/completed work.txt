@@ -74,3 +74,7 @@ completing cart and and checkout page (also database update)
 day 13
 
 completing user profile page,change password and creating admin order master
+
+day 14
+
+completing pdf invoice front order history and editing checkout page with email pushing invoice

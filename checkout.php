@@ -37,6 +37,22 @@ if(isset($_POST['place_order'])){
 		mysqli_query($con,"insert into order_detail(order_id,dish_details_id,price,qty) values('$insert_id','$key','".$val['price']."','".$val['qty']."')");
 	}
 	emptyCart();
+
+
+//sending email
+
+
+	$getUserDetailsBy=getUserDetailsByid();
+	$email=$getUserDetailsBy['email'];
+	$emailHTML=orderEmail($insert_id);
+	include('smtp/PHPMailerAutoload.php');
+	send_email($email,$emailHTML,'Order Placed');
+
+
+
+
+
+
 	redirect(FRONT_SITE_PATH.'success');
 	
 }
