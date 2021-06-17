@@ -78,3 +78,9 @@ completing user profile page,change password and creating admin order master
 day 14
 
 completing pdf invoice front order history and editing checkout page with email pushing invoice
+
+
+day 15
+
+admin dish status and front dish status cart  (debugging the cart)
+

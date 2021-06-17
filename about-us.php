@@ -22,9 +22,11 @@ include('header.php');
                     <div class="col-lg-12 col-md-7 d-flex align-items-center">
                         <div class="overview-content-2">
                             <h2>Welcome To <span>FOODKA RESTURANT</span> Store !</h2>
-                            <p class="peragraph-blog">Billy Shop is a premium HTML template designed and develoved from the ground up with the sole purpose of helping you create an astonishing, the beautiful and user friendly website that will boost your product’s sales.</p>
-                            <p>The theme design package provides a complete Magento theme set for your online store according to your desired theme. This includes all Magento themes that are required for your online store's successful implementation.</p>
-                            <p>The theme design package provides a complete Magento theme set for your online store according to your desired theme.</p>
+                            <p class="peragraph-blog">Complete Online Food Ordering and Delivery System. On demand.</p>
+                            <p>Searching for an online food ordering system with table reservations, pickup and delivery software?</p>
+                            <p>Say no more. We’ve got you covered.
+
+Our online food ordering and delivery system centralizes all pick-up, delivery & dine in orders, so you can easily be in full control of your business.</p>
 
 
 

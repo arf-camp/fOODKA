@@ -115,14 +115,16 @@ else{
 				
 				$attributeArr=$_POST['attribute'];
 				$priceArr=$_POST['price'];
-                          
+                //status
+                $statusArr=$_POST['status'];         
                           //adding as an array with a value
 				foreach($attributeArr as $key=>$val)
 
 				{
 					$attribute=$val;
 					$price=$priceArr[$key];
-					mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price',1,'$added_on')");
+					$status=$statusArr[$key];
+					mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price','$status','$added_on')");
 					
 				}
 				
@@ -198,18 +200,18 @@ else{
               //for updaing  section again either remove/update or either new inserting attributes
 
                 $attributeArr=$_POST['attribute'];
-				$priceArr=$_POST['price'];
+				$priceArr=$_POST['price'];            $statusArr=$_POST['status'];
 				$dishDetailsIdArr=$_POST['dish_details_id'];
 				
 				foreach($attributeArr as $key=>$val){
 					$attribute=$val;
-					$price=$priceArr[$key];
+					$price=$priceArr[$key]; $status=$statusArr[$key];
 					
 					if(isset($dishDetailsIdArr[$key])){
 						$did=$dishDetailsIdArr[$key];
-						mysqli_query($con,"update dish_details set attribute='$attribute',price='$price' where id='$did'");
+						mysqli_query($con,"update dish_details set attribute='$attribute',price='$price',status='$status' where id='$did'");
 					}else{//if new attribute is added it will use else block
-						mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$id','$attribute','$price',1,'$added_on')");
+						mysqli_query($con,"insert into dish_details(dish_id,attribute,price,status,added_on) values('$id','$attribute','$price','$status','$added_on')");
 					}
 					
 					
@@ -323,23 +325,31 @@ $arrType=array("veg","non-veg");
      
 
 <!-- when we insert this if block will executed  -->
-	<?php if($id==''){?>     <!-- //error : $id==0 what  I need only 1 block on inserting -->
+	<?php if($id==''){?>  <!--//previous error : $id==0 what  I need only 1 block on inserting -->
 
 
         <div class="row mt8">
 			
-			    <div class="col-5">
+			    <div class="col-4">
 					<input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required>
 			    </div>
 							
 
-			     <div class="col-5">
+			     <div class="col-3">
 					<input type="text" class="form-control" placeholder="Price" name="price[]" required>
 			    </div>
+
+			    <div class="col-3">
+								<select required name="status[]" class="form-control">
+									<option value="">Select Status</option>
+									<option value="1">Active</option>
+									<option value="0">Deactive</option>
+								</select>
+							</div>
 	    
 	    </div>
 
-<?php }   else {
+<?php }   else {//for update
 
 
 $dish_details_res=mysqli_query($con,"select * from dish_details where dish_id='$id'");
@@ -357,7 +367,7 @@ while($dish_details_row=mysqli_fetch_assoc($dish_details_res)){
 
 <div class="row mt8">
 			
-			    <div class="col-5">
+			    <div class="col-4">
 
             <input type="hidden" name="dish_details_id[]" value="<?php echo $dish_details_row['id']?>">
 
@@ -367,9 +377,29 @@ while($dish_details_row=mysqli_fetch_assoc($dish_details_res)){
 			    </div>
 							
 
-			     <div class="col-5">
+			     <div class="col-3">
 					<input type="text" class="form-control" placeholder="Price" name="price[]" required value="<?php echo $dish_details_row['price']?>">
 			    </div>
+
+
+
+			   <div class="col-3">
+								<select required name="status[]" class="form-control">
+									<option value="">Select Status</option>
+									<?php
+									if($dish_details_row['status']==1){
+									?>
+										<option value="1" selected>Active</option>
+										<option value="0">Deactive</option>
+									<?php } ?>
+									<?php
+									if($dish_details_row['status']==0){
+									?>
+										<option value="1">Active</option>
+										<option value="0" selected>Deactive</option>
+									<?php } ?>
+								</select>
+							</div>
 
 
                 <!-- // making remove button (on update) from  second attribute -->
@@ -431,7 +461,7 @@ function add_more(){
 
 
 //appending the same row              // we again assign a id with value of variable (how many time we clicked)
-var html='   <div class="row mt8" id="box'+add_more+'"><div class="col-5"><input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required></div><div class="col-5"><input type="text" class="form-control" placeholder="Price" name="price[]" required></div><div class="col-2"><button type="button" class="btn badge-danger delete_red mr-2" onclick=remove_more("'+add_more+'")>Remove</button></div></div>';
+var html='   <div class="row mt8" id="box'+add_more+'"><div class="col-4"><input type="text" class="form-control" placeholder="Attribute" name="attribute[]" required></div><div class="col-3"><input type="text" class="form-control" placeholder="Price" name="price[]" required></div><div class="col-3"><select class="form-control"  required name="status[]"><option value="">Select Status</option><option value="1">Active</option><option value="0">Deactive</option></select></div><div class="col-2"><button type="button" class="btn badge-danger delete_red mr-2" onclick=remove_more("'+add_more+'")>Remove</button></div></div>';
 
     jQuery('#dish_box1').append(html);  //dish box1 is id of div from-group
 

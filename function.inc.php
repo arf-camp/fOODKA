@@ -89,7 +89,40 @@ function manageUserCart($uid,$qty,$attr){
 	}
 }
 
-
+//this is called  first,if any product is on cart and admin deactivate attribute then 
+function getDishCartStatus(){
+  global $con;
+  $cartArr=array();
+  $dishDetailsID=array();
+  if(isset($_SESSION['FOOD_USER_ID'])){
+    $getUserCart=getUserCart();
+    $cartArr=array();
+    foreach($getUserCart as $list){
+      $dishDetailsID[]=$list['dish_detail_id'];
+    }
+  }else{
+    if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+      foreach($_SESSION['cart'] as $key=>$val){
+        $dishDetailsID[]=$key;
+      }
+    }
+  }
+  
+  foreach($dishDetailsID as $id){
+    $res=mysqli_query($con,"select dish_details.status,dish.status as dish_status,dish.id from dish_details,dish where dish_details.id='$id' and dish_details.dish_id=dish.id");
+    $row=mysqli_fetch_assoc($res);
+    if($row['dish_status']==0){  //this is dish status
+      $id=$row['id'];
+      $res=mysqli_query($con,"select id from dish_details where dish_id='$id'");
+      while($row1=mysqli_fetch_assoc($res)){
+        removeDishFromCartByid($row1['id']);    
+      }
+    }
+    if($row['status']==0){
+      removeDishFromCartByid($id);   //this is dish_details status
+    }
+  }
+}
 
 function getUserFullCart($attr_id=''){
 	

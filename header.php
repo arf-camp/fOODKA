@@ -5,6 +5,10 @@ include('database.inc.php');
 include('function.inc.php');
 include('constant.inc.php');
 
+
+
+getDishCartStatus();//checking fist from cart any attribute is deactivate or not 
+
 //for cart page (update button)
 if(isset($_POST['update_cart'])){
     foreach($_POST['qty'] as $key=>$val){
