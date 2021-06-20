@@ -104,7 +104,8 @@ foreach($cartArr as $list){
                         <div class="col-lg-3 col-md-4 col-12 col-sm-4">
                             <div class="logo">
                                 <a href="<?php echo FRONT_SITE_PATH?>">
-                                    <img alt="" src="assets/img/logo/front logo.jpg">
+                                	<img alt="" src="assets/img/logo/foodka200_90.jpg">
+                                   <!--  <img alt="" src="assets/img/logo/front logo.jpg"> -->
                                 </a>
                             </div>
                         </div>

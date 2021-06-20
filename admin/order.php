@@ -19,7 +19,6 @@ $res=mysqli_query($con,$sql);
                             <th width="20%">Name/Email/Mobile</th>
 							<th width="20%">Address/Zipcode</th>
 							<th width="5%">Price</th>
-							<th width="10%">Order Details</th>
 							<th width="10%">Payment Status</th>
 							<th width="10%">Order Status</th>
                             <th width="15%">Added On</th>
@@ -31,7 +30,11 @@ $res=mysqli_query($con,$sql);
 						while($row=mysqli_fetch_assoc($res)){
 						?>
 						<tr>
-                            <td><?php echo $row['id']?></td>
+                            <td>
+								<div class="div_order_id">
+									<a href="order_detail.php?id=<?php echo $row['id']?>"><?php echo $row['id']?></a>
+								</div>
+							</td>
                             <td>
 								<p><?php echo $row['name']?></p>
 								<p><?php echo $row['email']?></p>
@@ -41,29 +44,6 @@ $res=mysqli_query($con,$sql);
 								<p><?php echo $row['zipcode']?></p>
 							</td>
 							<td><?php echo $row['total_price']?></td>
-							<td>
-								<table style="border:1px solid #e9e8ef;">
-								<tr>
-									<th>Dish</th>
-									<th>Attribute</th>
-									<th>Price</th>
-									<th>Qty</th>
-								</tr>
-								<?php
-								$getOrderDetails=getOrderDetails($row['id']);
-								foreach($getOrderDetails as $list){
-									?>
-										<tr>
-											<td><?php echo $list['dish']?></td>
-											<td><?php echo $list['attribute']?></td>
-											<td><?php echo $list['price']?></td>
-											<td><?php echo $list['qty']?></td>
-										</tr>
-									<?php
-								}
-								?>
-								</table>
-							</td>
 							<td>
 								<div class="payment_status payment_status_<?php echo $row['payment_status']?>"><?php echo ucfirst($row['payment_status'])?></div>
 							</td>

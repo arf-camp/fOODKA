@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 06:45 PM
+-- Generation Time: Jun 20, 2021 at 06:18 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -88,10 +88,10 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id`, `category`, `order_number`, `status`, `added_on`) VALUES
 (1, 'Drink', 1, 1, '2020-06-16 12:06:33'),
-(2, 'Chinese', 2, 1, '2020-06-16 12:06:41'),
+(2, 'Chinese', 4, 1, '2020-06-16 12:06:41'),
 (3, 'South Indian', 3, 1, '2020-06-16 12:06:59'),
-(4, 'Dessert', 4, 1, '2020-06-16 12:07:18'),
-(6, 'murgh', 3, 1, '2021-06-03 08:23:24');
+(4, 'Dessert', 7, 1, '2020-06-16 12:07:18'),
+(6, 'murgh', 8, 1, '2021-06-03 08:23:24');
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,8 @@ CREATE TABLE `delivery_boy` (
 --
 
 INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`) VALUES
-(1, 'asad', '0137574556575', '123', 1, '2021-04-28 06:48:55');
+(1, 'KARIM', '0137574556575', '123', 1, '2021-04-28 06:48:55'),
+(2, 'Narayan', '52542424', '1234', 1, '2021-06-20 05:21:29');
 
 -- --------------------------------------------------------
 
@@ -254,6 +255,16 @@ CREATE TABLE `order_detail` (
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`) VALUES
+(1, 1, 6, 202, 1),
+(2, 1, 4, 250, 2),
+(3, 2, 10, 70, 2),
+(4, 3, 13, 202, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -275,6 +286,15 @@ CREATE TABLE `order_master` (
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `order_master`
+--
+
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`) VALUES
+(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '1219', 0, 'pending', 1, '2021-06-09 06:47:15'),
+(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '1219', 2, 'success', 2, '2021-06-14 06:11:32'),
+(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '1219', 0, 'pending', 2, '2021-06-20 06:12:33');
+
 -- --------------------------------------------------------
 
 --
@@ -291,7 +311,11 @@ CREATE TABLE `order_status` (
 --
 
 INSERT INTO `order_status` (`id`, `order_status`) VALUES
-(1, 'pending');
+(1, 'pending'),
+(2, 'cooking'),
+(3, 'On the Way'),
+(4, 'delivered'),
+(5, 'cancel');
 
 -- --------------------------------------------------------
 
@@ -439,7 +463,7 @@ ALTER TABLE `coupon_code`
 -- AUTO_INCREMENT for table `delivery_boy`
 --
 ALTER TABLE `delivery_boy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dish`
@@ -451,7 +475,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -463,19 +487,19 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`

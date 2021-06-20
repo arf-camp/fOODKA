@@ -19,6 +19,11 @@ function get_safe_value($str){
 
 }
 
+function dateFormat($date){
+  $str=strtotime($date);
+  return date('d-m-Y',$str);
+}
+
 
 function redirect($link){
 	?>
@@ -702,7 +707,8 @@ function orderEmail($oid){
             <tr>
               <td class="email-masthead">
                 <a href="'.FRONT_SITE_PATH.'" class="f-fallback email-masthead_name">
-                 <h2>FOODKA-Fresh Food</h2>
+                <img alt="FOODKA-Fresh Food" src="assets/img/logo/foodka200_90.jpg">
+                
               </a>
               </td>
             </tr>
@@ -780,7 +786,7 @@ function orderEmail($oid){
                         </table>
                         <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href="'.FRONT_SITE_PATH.'">support team</a> for help.</p>
                         <p>Cheers,
-                          <br>'.FRONT_SITE_NAME.'</p>
+                          <br><b>'.FRONT_SITE_NAME.' Developer Team </b></p>
                         <!-- Sub copy -->
                         
                       </div>
@@ -800,6 +806,18 @@ function orderEmail($oid){
 }
 
 
+function getDeliveryBoyNameById($id){
+  global $con;
+  $sql="select name,mobile from delivery_boy where id='$id'";
+  $data=array();
+  $res=mysqli_query($con,$sql);
+  if(mysqli_num_rows($res)>0){
+    $row=mysqli_fetch_assoc($res);
+    return $row['name'].'('.$row['mobile'].')'; 
+  }else{
+    return 'Not Assign';
+  }
+}
 
 
 
