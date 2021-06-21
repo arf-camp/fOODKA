@@ -3,6 +3,12 @@ include ("header.php");
 if(!isset($_SESSION['ORDER_ID'])){
 	redirect(FRONT_SITE_PATH.'shop');
 }
+if(isset($_SESSION['COUPON_CODE'])){
+    unset($_SESSION['COUPON_CODE']);
+    unset($_SESSION['FINAL_PRICE']);
+}
+
+
 ?>
 
 <div class="breadcrumb-area gray-bg">

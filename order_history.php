@@ -38,7 +38,25 @@ $res=mysqli_query($con,$sql);
 											<br/>
 											<a href="<?php echo FRONT_SITE_PATH?>download_invoice?id=<?php echo $row['id']?>"><img src='<?php echo FRONT_SITE_PATH?>assets/img/icon-img/pdf.png' width="30px" title="Download Invoice"/></a>
 											</td>
-                                            <td><?php echo $row['total_price']?></td>
+
+
+                                        
+                                           <td style="font-size:14px;">
+											Total:- <?php echo $row['total_price']?><br/>
+											<!--   //if coupon code apply then show  -->
+											<?php
+											if($row['coupon_code']!=''){
+											?>
+											Coupon Code:- <?php echo $row['coupon_code']?><br/>
+											Final Price:- <?php echo $row['final_price']?>
+											<?php } ?>
+											</td>
+
+
+
+
+
+                                         
                                             <td><?php echo $row['address']?><br/>
 											<?php echo $row['zipcode']?></td>
 											<td>

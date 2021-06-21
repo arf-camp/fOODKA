@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2021 at 06:18 PM
+-- Generation Time: Jun 21, 2021 at 06:10 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -139,7 +139,7 @@ CREATE TABLE `coupon_code` (
 --
 
 INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
-(1, 'udemy30', 'F', 100, 200, '2021-05-01', 1, '2021-04-28 06:50:09');
+(1, 'udemy21', 'P', 30, 40, '2021-06-30', 1, '2021-04-28 06:50:09');
 
 -- --------------------------------------------------------
 
@@ -263,7 +263,9 @@ INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`)
 (1, 1, 6, 202, 1),
 (2, 1, 4, 250, 2),
 (3, 2, 10, 70, 2),
-(4, 3, 13, 202, 1);
+(4, 3, 13, 202, 1),
+(5, 4, 8, 50, 1),
+(6, 5, 8, 50, 1);
 
 -- --------------------------------------------------------
 
@@ -279,6 +281,8 @@ CREATE TABLE `order_master` (
   `mobile` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `total_price` float NOT NULL,
+  `coupon_code` varchar(20) NOT NULL,
+  `final_price` float NOT NULL,
   `zipcode` varchar(10) NOT NULL,
   `delivery_boy_id` int(11) NOT NULL,
   `payment_status` varchar(20) NOT NULL,
@@ -290,10 +294,12 @@ CREATE TABLE `order_master` (
 -- Dumping data for table `order_master`
 --
 
-INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`) VALUES
-(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '1219', 0, 'pending', 1, '2021-06-09 06:47:15'),
-(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '1219', 2, 'success', 2, '2021-06-14 06:11:32'),
-(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '1219', 0, 'pending', 2, '2021-06-20 06:12:33');
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`) VALUES
+(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '', 0, '1219', 0, 'pending', 1, '2021-06-09 06:47:15'),
+(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 2, '2021-06-14 06:11:32'),
+(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 2, '2021-06-20 06:12:33'),
+(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 1, '2021-06-20 10:10:41'),
+(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 0, 'pending', 1, '2021-06-21 05:18:52');
 
 -- --------------------------------------------------------
 
@@ -320,6 +326,20 @@ INSERT INTO `order_status` (`id`, `order_status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL,
+  `cart_min_price` int(11) NOT NULL,
+  `cart_min_price_msg` int(200) NOT NULL,
+  `website_close` int(11) NOT NULL,
+  `website_close_msg` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -341,7 +361,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`) VALUES
 (1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-06-03 01:28:14', 1, 1, 'vnqraihcnpyejjw'),
-(2, 'Md Ashequr Rahman Farib', 'asheqrahman2621@gmail.com', '01926219940', 'asd', '2021-06-03 06:16:31', 1, 0, 'qvufchdhraplfwb');
+(2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'sah1', '2021-06-03 06:16:31', 1, 1, 'qvufchdhraplfwb');
 
 --
 -- Indexes for dumped tables
@@ -420,6 +440,12 @@ ALTER TABLE `order_status`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -475,7 +501,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -487,19 +513,25 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -29,14 +29,19 @@ if(isset($_POST['update_cart'])){
 }
 
 $cartArr=getUserFullCart();
+
+
+$totalPrice=getcartTotalPrice();
+
 $totalCartDish=count($cartArr); //counting my cart product
 
 
 //for finding total price
-$totalPrice=0;
-foreach($cartArr as $list){
-    $totalPrice=$totalPrice+($list['qty']*$list['price']);
-}
+// $totalPrice=0;
+// foreach($cartArr as $list){
+//     $totalPrice=$totalPrice+($list['qty']*$list['price']);
+// }
+
 
 
  ?>

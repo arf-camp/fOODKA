@@ -129,6 +129,20 @@ function getDishCartStatus(){
   }
 }
 
+
+//total cart price calculation
+function getcartTotalPrice(){
+  $cartArr=getUserFullCart();
+  $totalPrice=0;
+  foreach($cartArr as $list){
+    $totalPrice=$totalPrice+($list['qty']*$list['price']);
+  }
+  return $totalPrice;
+}
+
+
+
+
 function getUserFullCart($attr_id=''){
 	
 	$cartArr=array();
@@ -198,19 +212,21 @@ function removeDishFromCartByid($id){
 	}
 }
 
-function getUserDetailsByid(){
-	global $con;
-	$data['name']='';
-	$data['email']='';
-	$data['mobile']='';
-	
-	if(isset($_SESSION['FOOD_USER_ID'])){
-		$row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where id=".$_SESSION['FOOD_USER_ID']));
-		$data['name']=$row['name'];
-		$data['email']=$row['email'];
-		$data['mobile']=$row['mobile'];
-	}
-	return $data;
+function getUserDetailsByid($uid=''){
+  global $con;
+  $data['name']='';
+  $data['email']='';
+  $data['mobile']='';
+  
+  if(isset($_SESSION['FOOD_USER_ID'])){
+    $uid=$_SESSION['FOOD_USER_ID'];
+  }
+  
+  $row=mysqli_fetch_assoc(mysqli_query($con,"select * from user where id='$uid'"));
+  $data['name']=$row['name'];
+  $data['email']=$row['email'];
+  $data['mobile']=$row['mobile'];
+  return $data;
 }
 
 function emptyCart(){
@@ -256,8 +272,8 @@ function getOrderById($oid){
 
 
 //invoice
-function orderEmail($oid){
-	$getUserDetailsBy=getUserDetailsByid();
+function orderEmail($oid,$uid=''){
+	$getUserDetailsBy=getUserDetailsByid($uid);
 	$name=$getUserDetailsBy['name'];
 	$email=$getUserDetailsBy['email'];
 	
