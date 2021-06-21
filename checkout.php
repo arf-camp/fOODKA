@@ -1,5 +1,13 @@
 <?php
 include ("header.php");
+
+
+if($website_close==1){
+	redirect(FRONT_SITE_PATH.'shop');
+}
+
+
+
 $cartArr=getUserFullCart(); //prx($cartArr);
 if(count($cartArr)>0){ //if we dnt have a cart no checkout page
 	
@@ -20,7 +28,25 @@ if(isset($_SESSION['FOOD_USER_ID'])){
 	$final_box_id='';
 }
 $userArr=getUserDetailsByid();
+
+$is_error='';
 if(isset($_POST['place_order'])){
+
+// if($cart_min_price!=''){   *(error)
+if($cart_min_price!=''){   //if admin set cart_min_price not null then execute condition  
+		if($totalPrice>=$cart_min_price){
+			
+		}else{
+			$is_error='yes';
+		}
+		
+	}
+
+
+
+if($is_error==''){
+
+                           
 	$checkout_name=get_safe_value($_POST['checkout_name']);
 	$checkout_email=get_safe_value($_POST['checkout_email']);
 	$checkout_mobile=get_safe_value($_POST['checkout_mobile']);
@@ -67,7 +93,7 @@ if(isset($_POST['place_order'])){
 
 
 
-	redirect(FRONT_SITE_PATH.'success');
+	redirect(FRONT_SITE_PATH.'success');     }
 	
 }
 ?>
@@ -201,6 +227,13 @@ if(isset($_POST['place_order'])){
 						
 						</div>
 													</div>
+
+                                                     <?php
+													if($is_error=='yes'){
+														echo "<div style='color:red;'>$cart_min_price_msg</div>";
+													}
+													?>
+
 												</div>
 											</form>
                                         </div>

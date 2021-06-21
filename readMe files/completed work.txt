@@ -90,6 +90,11 @@ admin dish ,dish details ,download pdf correction ,order status changing deliver
 
 day 17
 
-
 bug fixing for pdf infoce front and admin section
 coupon code management: cupon minimum,date expired error mssg ,on success final price return
+
+
+day 18
+
+settings:
+cart minimum price setting , mssg and  website close/open setting mssg 

@@ -33,6 +33,8 @@ if($cur_path=='' || $cur_path=='index.php'){
   $page_title='Customer Feedback ';
 }elseif($cur_path=='order.php'){
   $page_title='Order Master';
+}elseif($cur_path=='setting.php'){
+	$page_title='Setting';
 }
 
 
@@ -199,7 +201,12 @@ if($cur_path=='' || $cur_path=='index.php'){
             </a>
           </li>
 
-
+<li class="nav-item">
+            <a class="nav-link" href="setting.php">
+              <i class="mdi mdi-contact-mail"></i>
+                <span class="menu-title"> Setting</span>
+            </a>
+          </li>
 
 
 

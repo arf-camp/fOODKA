@@ -49,7 +49,15 @@ $arrType=array("veg","non-veg","both");
                 </div>
             </div>
         </div>
-      
+    <!--   website close mssg -->
+
+      <?php
+    if($website_close==1){
+      echo '<div style="text-align: center;margin-top: 50px;color:#ca1e5e;"><h3>';
+      echo $website_close_msg;
+      echo '</h3></div>';
+    }
+    ?>
 
         <div class="shop-page-area pt-100 pb-100">
             <div class="container">
@@ -228,7 +236,7 @@ $dish_attr_res=mysqli_query($con,"select * from dish_details where status='1' an
  </div>
  
                 <!--  shopping icon and dropdown -->
-
+<?php if($website_close==0){?>  <!-- website closed condition --> 
 <div class="product-price-wrapper">
                             
             <select class="select" id="qty<?php echo $product_row['id']?>">
@@ -245,6 +253,13 @@ $dish_attr_res=mysqli_query($con,"select * from dish_details where status='1' an
         <i class="fa fa-cart-plus cart_icon" aria-hidden="true" onclick="add_to_cart('<?php echo $product_row['id']?>','add')"></i>
 </div>
 
+<?php } else{
+               ?>
+        <div class="product-price-wrapper">
+      <strong><?php echo $website_close_msg?></strong>
+        </div>
+    
+         <?php  }  ?>
 
 
   </div>

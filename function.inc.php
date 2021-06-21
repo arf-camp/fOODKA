@@ -835,7 +835,13 @@ function getDeliveryBoyNameById($id){
   }
 }
 
-
+function getSetting(){
+  global $con;
+  $sql="select * from setting where id='1'";
+  $res=mysqli_query($con,$sql);
+  $row=mysqli_fetch_assoc($res);
+  return $row;
+}
 
 
 ?>
