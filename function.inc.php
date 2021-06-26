@@ -242,12 +242,12 @@ function emptyCart(){
 
 function getOrderDetails($oid){
 	global $con;
-	$sql="select order_detail.price,order_detail.qty,dish_details.attribute,dish.dish
-	from order_detail,dish_details,dish
-	WHERE
-	order_detail.order_id=$oid AND
-	order_detail.dish_details_id=dish_details.id AND
-	dish_details.dish_id=dish.id";
+	$sql="select order_detail.price,order_detail.qty,dish_details.attribute,dish.dish,order_detail.dish_details_id
+  from order_detail,dish_details,dish
+  WHERE
+  order_detail.order_id=$oid AND
+  order_detail.dish_details_id=dish_details.id AND
+  dish_details.dish_id=dish.id";
 	$data=array();
 	$res=mysqli_query($con,$sql);
 	while($row=mysqli_fetch_assoc($res)){
@@ -843,5 +843,52 @@ function getSetting(){
   return $row;
 }
 
+function getRatingList($did,$oid){
+  $arr=array('Bad','Below Average','Average','Good','Very Good');
+  $html='<select onchange=updaterating("'.$did.'","'.$oid.'") id="rate'.$did.'">';
+    $html.='<option value="">Select Rating</option>';
+    foreach($arr as $key=>$val){
+      $id=$key+1;
+      $html.="<option value='$id'>$val</option>"; 
+    }
+  $html.='</select>';
+  return $html;
+}
 
+function getRating($did,$oid){
+  global $con;
+  $sql="select * from rating where order_id='$oid' and dish_detail_id='$did'";
+  $res=mysqli_query($con,$sql);
+  if(mysqli_num_rows($res)>0){
+    $row=mysqli_fetch_assoc($res);
+    $rating=$row['rating'];
+    $arr=array('','Bad','Below Average','Average','Good','Very Good');
+    echo "<div class='set_rating'>".$arr[$rating]."</div>";
+  }else{
+    echo getRatingList($did,$oid);
+  }
+}
+
+function getRatingByDishId($id){
+  global $con;
+  $sql="select id from dish_details where dish_id='$id'";
+  $res=mysqli_query($con,$sql);
+  $arr=array();
+  $str='';
+  while($row=mysqli_fetch_assoc($res)){
+    $str.="dish_detail_id='".$row['id']."' or ";
+  }
+  $str=rtrim($str," or");
+  $arr=array('','Bad','Below Average','Average','Good','Very Good');
+  $sql="select sum(rating) as rating,count(*) as total from rating where $str";
+  $res=mysqli_query($con,$sql);
+  $row=mysqli_fetch_assoc($res);
+  if($row['total']>0){
+    $totalRate=$row['rating']/$row['total'];
+    echo "<span class='rating'> (".$arr[round($totalRate)]." rated by ".$row['total']." users)</span>";
+  }
+  
+  
+  
+}
 ?>

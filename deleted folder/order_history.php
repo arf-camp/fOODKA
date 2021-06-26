@@ -22,9 +22,8 @@ $res=mysqli_query($con,$sql);
                                         <tr>
                                             <th>Order No</th>
                                             <th>Price</th>
-											<th>Coupon</th>
                                             <th>Address</th>
-											<th>Zipcode</th>
+                                            <th>Dish</th>
                                             <th>Order Status</th>
                                             <th>Payment Status</th>
                                         </tr>
@@ -35,15 +34,16 @@ $res=mysqli_query($con,$sql);
 										while($row=mysqli_fetch_assoc($res)){
 										?>
 										<tr>
-                                            <td>
-												<div class="div_order_id"><a href="<?php echo FRONT_SITE_PATH.'order_detail?id='.$row['id']?>"><?php echo $row['id']?></div></a>
-											
+                                            <td><?php echo $row['id']?>
 											<br/>
-											<a href="<?php echo FRONT_SITE_PATH?>download_invoice?id=<?php echo $row['id']?>"><img src='<?php echo FRONT_SITE_PATH?>assets/img/icon-img/pdf.png' width="20px" title="Download Invoice"/></a>
+											<a href="<?php echo FRONT_SITE_PATH?>download_invoice?id=<?php echo $row['id']?>"><img src='<?php echo FRONT_SITE_PATH?>assets/img/icon-img/pdf.png' width="30px" title="Download Invoice"/></a>
 											</td>
-                                            <td style="font-size:14px;">
-											<?php echo $row['total_price']?></td>
-                                            <td>
+
+
+                                        
+                                           <td style="font-size:14px;">
+											Total:- <?php echo $row['total_price']?><br/>
+											<!--   //if coupon code apply then show  -->
 											<?php
 											if($row['coupon_code']!=''){
 											?>
@@ -51,8 +51,37 @@ $res=mysqli_query($con,$sql);
 											Final Price:- <?php echo $row['final_price']?>
 											<?php } ?>
 											</td>
-											<td><?php echo $row['address']?></td>
-											<td><?php echo $row['zipcode']?></td>
+
+
+
+
+
+                                         
+                                            <td><?php echo $row['address']?><br/>
+											<?php echo $row['zipcode']?></td>
+											<td>
+												<table style="border:1px solid #e9e8ef;">
+												<tr>
+													<th>Dish</th>
+													<th>Attribute</th>
+													<th>Price</th>
+													<th>Qty</th>
+												</tr>
+												<?php
+												$getOrderDetails=getOrderDetails($row['id']);
+												foreach($getOrderDetails as $list){
+													?>
+														<tr>
+															<td><?php echo $list['dish']?></td>
+															<td><?php echo $list['attribute']?></td>
+															<td><?php echo $list['price']?></td>
+															<td><?php echo $list['qty']?></td>
+														</tr>
+													<?php
+												}
+												?>
+												</table>
+											</td>
 											<td><?php echo $row['order_status_str']?></td>
 											<td>
 												<div class="payment_status payment_status_<?php echo $row['payment_status']?>"><?php echo ucfirst($row['payment_status'])?></div>

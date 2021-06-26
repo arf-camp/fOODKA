@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2021 at 06:10 PM
+-- Generation Time: Jun 22, 2021 at 12:11 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -265,7 +265,11 @@ INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`)
 (3, 2, 10, 70, 2),
 (4, 3, 13, 202, 1),
 (5, 4, 8, 50, 1),
-(6, 5, 8, 50, 1);
+(6, 5, 8, 50, 1),
+(7, 6, 5, 45, 1),
+(8, 7, 5, 45, 3),
+(9, 8, 5, 45, 1),
+(10, 9, 10, 70, 1);
 
 -- --------------------------------------------------------
 
@@ -299,7 +303,11 @@ INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address
 (2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 2, '2021-06-14 06:11:32'),
 (3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 2, '2021-06-20 06:12:33'),
 (4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 1, '2021-06-20 10:10:41'),
-(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 0, 'pending', 1, '2021-06-21 05:18:52');
+(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 0, 'pending', 1, '2021-06-21 05:18:52'),
+(6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', 1, '2021-06-21 11:43:33'),
+(7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', 1, '2021-06-21 11:47:48'),
+(8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', 1, '2021-06-21 11:54:18'),
+(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', 1, '2021-06-22 12:01:22');
 
 -- --------------------------------------------------------
 
@@ -332,10 +340,17 @@ INSERT INTO `order_status` (`id`, `order_status`) VALUES
 CREATE TABLE `setting` (
   `id` int(11) NOT NULL,
   `cart_min_price` int(11) NOT NULL,
-  `cart_min_price_msg` int(200) NOT NULL,
+  `cart_min_price_msg` varchar(200) NOT NULL,
   `website_close` int(11) NOT NULL,
   `website_close_msg` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`) VALUES
+(1, 0, '', 0, 'website is closed now. You can checkout between 8 am to 10 pm');
 
 -- --------------------------------------------------------
 
@@ -501,7 +516,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -513,13 +528,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -531,7 +546,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `setting`
 --
 ALTER TABLE `setting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

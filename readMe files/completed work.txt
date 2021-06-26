@@ -98,3 +98,10 @@ day 18
 
 settings:
 cart minimum price setting , mssg and  website close/open setting mssg 
+
+day 19
+
+completing rating calculator by user and show on shop page
+
+
+

@@ -191,7 +191,10 @@ $product_sql="select * from dish where status=1";
                             ?>
 
 
-         <a href="javascript:void(0)"><?php echo $product_row['dish']?></a>  <!-- //dish name -->
+         <a href="javascript:void(0)"><?php echo $product_row['dish'];
+               getRatingByDishId($product_row['id']);
+
+         ?></a>  <!-- //dish name -->      <!-- and rating coversation -->
               
               </h4>
 
