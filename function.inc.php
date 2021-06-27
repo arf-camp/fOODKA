@@ -795,8 +795,29 @@ function orderEmail($oid,$uid=''){
                                   <td width="20%" class="purchase_footer" valign="middle">
                                     <p class="f-fallback purchase_total">'.$total_price.'</p>
                                   </td>
-                                </tr>
-                              </table>
+                                </tr>';
+
+   // if coupon code apply
+if($getOrderById[0]['coupon_code']!=''){
+                  $html.='<tr>
+                                  <td width="80%" class="purchase_footer" valign="middle" colspan="2">
+                                    <p class="f-fallback purchase_total purchase_total--label">Coupon Code</p>
+                                  </td>
+                                  <td width="20%" class="purchase_footer" valign="middle">
+                                    <p class="f-fallback purchase_total">'.$getOrderById[0]['coupon_code'].'</p>
+                                  </td>
+                                </tr><tr>
+                                  <td width="80%" class="purchase_footer" valign="middle" colspan="2">
+                                    <p class="f-fallback purchase_total purchase_total--label">Final Total</p>
+                                  </td>
+                                  <td width="20%" class="purchase_footer" valign="middle">
+                                    <p class="f-fallback purchase_total">'.$getOrderById[0]['final_price'].'</p>
+                                  </td>
+                                </tr>';
+
+                }
+                
+                             $html.='</table>
                             </td>
                           </tr>
                         </table>

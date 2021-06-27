@@ -65,6 +65,31 @@ $uid=$_SESSION['FOOD_USER_ID'];
 													<td><strong><?php echo $pp?></strong></td>
 													<td></td>
 												</tr>
+
+                                              <!--  //if coupon code apply -->
+
+                                               	<?php
+												
+												if($getOrderById[0]['coupon_code']!=''){
+													?>
+													<tr>
+														<td colspan="3"></td>
+														<td><strong>Coupon Code</strong></td>
+														<td><strong><?php echo $getOrderById[0]['coupon_code']?></strong></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td colspan="3"></td>
+														<td><strong>Final Total</strong></td>
+														<td><strong><?php echo $getOrderById[0]['final_price']?></strong></td>
+														<td></td>
+													</tr>
+													<?php
+												}
+												?>
+
+
+
 												</table>
 								
                             </div>

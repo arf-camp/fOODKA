@@ -96,6 +96,21 @@ if(isset($_GET['id']) && $_GET['id']>0){
                     </div>
                     <div class="container-fluid mt-5 w-100">
                       <h4 class="text-right mb-5">Total : <?php echo $pp?></h4>
+
+                       <!-- if coupon code apply -->
+
+                        <?php
+						if($orderRow['coupon_code']!=''){
+						?>
+						  <h4 class="text-right mb-5">Coupon Code : <?php echo $orderRow['coupon_code']?></h4>
+						  <h4 class="text-right mb-5">Final Total : <?php echo $orderRow['final_price']?></h4>
+						<?php
+						}
+						?>
+
+
+
+
                       <hr>
                     </div>
                     <div class="container-fluid w-100">
