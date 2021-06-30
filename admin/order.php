@@ -19,6 +19,7 @@ $res=mysqli_query($con,$sql);
                             <th width="20%">Name/Email/Mobile</th>
 							<th width="20%">Address/Zipcode</th>
 							<th width="5%">Price</th>
+							<th width="10%">Payment Type</th>
 							<th width="10%">Payment Status</th>
 							<th width="10%">Order Status</th>
                             <th width="15%">Added On</th>
@@ -52,6 +53,7 @@ $res=mysqli_query($con,$sql);
 								<?php } ?>
 							
 							</td>
+							<td><?php echo $row['payment_type']?></td>
 							<td>
 								<div class="payment_status payment_status_<?php echo $row['payment_status']?>"><?php echo ucfirst($row['payment_status'])?></div>
 							</td>

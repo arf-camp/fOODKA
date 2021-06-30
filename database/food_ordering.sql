@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2021 at 12:11 AM
+-- Generation Time: Jun 30, 2021 at 05:47 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -65,8 +65,8 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `image`, `heading`, `sub_heading`, `link`, `link_txt`, `added_on`, `status`, `order_number`) VALUES
-(3, '3369_546847873_banner-4.jpg', 'EAT FOOD FROM US ', 'AND GO TO BATHROOM ALL THE DAY', 'shop', 'ORDER NOW', '2021-05-04 01:12:11', 1, 1),
-(4, '2068_chinese.jpg', 'EAT THE WORST FOOD OF THE WORLD', 'AND GO TO BATHROOM ALL THE DAY', 'shop', 'SHOP NOW', '2021-05-04 01:13:25', 1, 2);
+(3, '3369_546847873_banner-4.jpg', 'EAT FOOD FROM US ', 'BE HEALTHY', 'shop', 'ORDER NOW', '2021-05-04 01:12:11', 1, 1),
+(4, '2068_chinese.jpg', 'EAT THE BEST FOOD OF THE WORLD', 'STAY SAFE', 'shop', 'SHOP NOW', '2021-05-04 01:13:25', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,7 @@ CREATE TABLE `delivery_boy` (
 --
 
 INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`) VALUES
-(1, 'KARIM', '0137574556575', '123', 1, '2021-04-28 06:48:55'),
+(1, 'KARIM', '01926219940', '123', 1, '2021-04-28 06:48:55'),
 (2, 'Narayan', '52542424', '1234', 1, '2021-06-20 05:21:29');
 
 -- --------------------------------------------------------
@@ -290,24 +290,27 @@ CREATE TABLE `order_master` (
   `zipcode` varchar(10) NOT NULL,
   `delivery_boy_id` int(11) NOT NULL,
   `payment_status` varchar(20) NOT NULL,
+  `payment_type` varchar(10) NOT NULL,
+  `payment_id` varchar(100) NOT NULL,
   `order_status` int(11) NOT NULL,
-  `added_on` datetime NOT NULL
+  `added_on` datetime NOT NULL,
+  `delivered_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_master`
 --
 
-INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `order_status`, `added_on`) VALUES
-(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '', 0, '1219', 0, 'pending', 1, '2021-06-09 06:47:15'),
-(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 2, '2021-06-14 06:11:32'),
-(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 2, '2021-06-20 06:12:33'),
-(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 1, '2021-06-20 10:10:41'),
-(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 0, 'pending', 1, '2021-06-21 05:18:52'),
-(6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', 1, '2021-06-21 11:43:33'),
-(7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', 1, '2021-06-21 11:47:48'),
-(8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', 1, '2021-06-21 11:54:18'),
-(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', 1, '2021-06-22 12:01:22');
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `payment_type`, `payment_id`, `order_status`, `added_on`, `delivered_on`) VALUES
+(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '', 0, '1219', 1, 'pending', '', '', 2, '2021-06-09 06:47:15', '2021-06-30 21:17:24'),
+(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 'cod', '', 2, '2021-06-14 06:11:32', '2021-06-30 21:17:24'),
+(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 'cod', '', 2, '2021-06-20 06:12:33', '2021-06-30 21:17:24'),
+(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 'cod', '', 1, '2021-06-20 10:10:41', '2021-06-30 21:17:24'),
+(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 1, 'pending', 'cod', '', 4, '2021-06-21 05:18:52', '2021-06-30 09:36:49'),
+(6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', '', '', 1, '2021-06-21 11:43:33', '2021-06-30 21:17:24'),
+(7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', '', '', 1, '2021-06-21 11:47:48', '2021-06-30 21:17:24'),
+(8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', '', '', 1, '2021-06-21 11:54:18', '2021-06-30 21:17:24'),
+(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-06-22 12:01:22', '2021-06-30 21:17:24');
 
 -- --------------------------------------------------------
 
@@ -330,6 +333,27 @@ INSERT INTO `order_status` (`id`, `order_status`) VALUES
 (3, 'On the Way'),
 (4, 'delivered'),
 (5, 'cancel');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating`
+--
+
+CREATE TABLE `rating` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `dish_detail_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`id`, `user_id`, `order_id`, `dish_detail_id`, `rating`) VALUES
+(1, 1, 9, 10, 4);
 
 -- --------------------------------------------------------
 
@@ -455,6 +479,12 @@ ALTER TABLE `order_status`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `setting`
 --
 ALTER TABLE `setting`
@@ -541,6 +571,12 @@ ALTER TABLE `order_master`
 --
 ALTER TABLE `order_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `setting`

@@ -135,7 +135,7 @@ if($cur_path=='' || $cur_path=='index.php'){
 
 <li class="nav-item">
             <a class="nav-link" href="order.php">
-              <i class="mdi mdi-format-align-justify"></i>
+              <i class="mdi mdi-truck-delivery"></i>
               <span class="menu-title">Order</span>
             </a>
           </li>
@@ -148,7 +148,7 @@ if($cur_path=='' || $cur_path=='index.php'){
 
   <li class="nav-item">
             <a class="nav-link" href="category.php">
-              <i class="mdi mdi-format-align-justify"></i>
+              <i class="mdi mdi-menu"></i>
               <span class="menu-title"> Category</span>
             </a>
           </li>
@@ -188,7 +188,7 @@ if($cur_path=='' || $cur_path=='index.php'){
 
           <li class="nav-item">
             <a class="nav-link" href="contact_us.php">
-              <i class="mdi mdi-email-open"></i>
+              <i class="mdi mdi-comment-processing"></i>
               <span class="menu-title"> Contact Us</span>
             </a>
           </li>
@@ -203,7 +203,7 @@ if($cur_path=='' || $cur_path=='index.php'){
 
 <li class="nav-item">
             <a class="nav-link" href="setting.php">
-              <i class="mdi mdi-contact-mail"></i>
+              <i class="mdi mdi-settings"></i>
                 <span class="menu-title"> Setting</span>
             </a>
           </li>
