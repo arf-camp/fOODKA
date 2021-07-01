@@ -68,8 +68,9 @@ if($is_error==''){
 
 
 	
-	$added_on=date('Y-m-d h:i:s');
-	$sql="insert into order_master(user_id,name,email,mobile,address,zipcode,total_price,order_status,payment_status,added_on,coupon_code,final_price) values('".$_SESSION['FOOD_USER_ID']."','$checkout_name','$checkout_email','$checkout_mobile','$checkout_address','$checkout_zip','$totalPrice','1','pending','$added_on','$coupon_code','$final_price')";
+$added_on=date('Y-m-d h:i:s');
+$sql="insert into order_master(user_id,name,email,mobile,address,zipcode,total_price,order_status,payment_status,added_on,coupon_code,final_price,payment_type) values('".$_SESSION['FOOD_USER_ID']."','$checkout_name','$checkout_email','$checkout_mobile','$checkout_address','$checkout_zip','$totalPrice','1','pending','$added_on','$coupon_code','$final_price','$payment_type')";
+	
 	mysqli_query($con,$sql);
 	$insert_id=mysqli_insert_id($con);
 	$_SESSION['ORDER_ID']=$insert_id; //storing order ID
@@ -84,16 +85,22 @@ if($is_error==''){
 
 	$getUserDetailsBy=getUserDetailsByid();
 	$email=$getUserDetailsBy['email'];
-	$emailHTML=orderEmail($insert_id);
-	include('smtp/PHPMailerAutoload.php');
-	send_email($email,$emailHTML,'Order Placed');
+	// $emailHTML=orderEmail($insert_id);
+	// include('smtp/PHPMailerAutoload.php');
+	// send_email($email,$emailHTML,'Order Placed');
+            if($payment_type=='cod'){
+			$emailHTML=orderEmail($insert_id);
+			include('smtp/PHPMailerAutoload.php');
+			send_email($email,$emailHTML,'Order Placed');
+			redirect(FRONT_SITE_PATH.'success');
+		}
 
 
 
 
 
-
-	redirect(FRONT_SITE_PATH.'success');     }
+	// redirect(FRONT_SITE_PATH.'success');     
+	}
 	
 }
 ?>
@@ -211,7 +218,7 @@ if($is_error==''){
 													</div>
 													<div class="ship-wrapper">
 														<div class="single-ship">
-															<input type="radio" name="payment_type" value="cod" checked="checked">
+															<input type="radio" name="payment_type" value="cod">
 															<label>Cash on Delivery(COD)</label>
 														</div>
 														<!--<div class="single-ship">

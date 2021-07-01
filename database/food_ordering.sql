@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2021 at 05:47 PM
+-- Generation Time: Jul 02, 2021 at 12:09 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -269,7 +269,8 @@ INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`)
 (7, 6, 5, 45, 1),
 (8, 7, 5, 45, 3),
 (9, 8, 5, 45, 1),
-(10, 9, 10, 70, 1);
+(10, 9, 10, 70, 1),
+(11, 10, 7, 100, 6);
 
 -- --------------------------------------------------------
 
@@ -306,11 +307,12 @@ INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address
 (2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 'cod', '', 2, '2021-06-14 06:11:32', '2021-06-30 21:17:24'),
 (3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 'cod', '', 2, '2021-06-20 06:12:33', '2021-06-30 21:17:24'),
 (4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 'cod', '', 1, '2021-06-20 10:10:41', '2021-06-30 21:17:24'),
-(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 1, 'pending', 'cod', '', 4, '2021-06-21 05:18:52', '2021-06-30 09:36:49'),
+(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 1, 'pending', 'cod', '', 4, '2021-06-29 05:18:52', '2021-06-30 09:36:49'),
 (6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', '', '', 1, '2021-06-21 11:43:33', '2021-06-30 21:17:24'),
 (7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', '', '', 1, '2021-06-21 11:47:48', '2021-06-30 21:17:24'),
 (8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', '', '', 1, '2021-06-21 11:54:18', '2021-06-30 21:17:24'),
-(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-06-22 12:01:22', '2021-06-30 21:17:24');
+(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-07-02 12:01:22', '2021-06-30 21:17:24'),
+(10, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 600, '', 600, '11212', 0, 'pending', 'cod', '', 1, '2021-07-02 03:55:35', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -546,7 +548,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -558,13 +560,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_status`
