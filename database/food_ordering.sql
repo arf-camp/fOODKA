@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 12:09 AM
+-- Generation Time: Jul 02, 2021 at 04:37 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -295,24 +295,26 @@ CREATE TABLE `order_master` (
   `payment_id` varchar(100) NOT NULL,
   `order_status` int(11) NOT NULL,
   `added_on` datetime NOT NULL,
-  `delivered_on` datetime NOT NULL
+  `delivered_on` datetime NOT NULL,
+  `cancel_by` enum('user','admin') NOT NULL,
+  `cancel_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_master`
 --
 
-INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `payment_type`, `payment_id`, `order_status`, `added_on`, `delivered_on`) VALUES
-(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '', 0, '1219', 1, 'pending', '', '', 2, '2021-06-09 06:47:15', '2021-06-30 21:17:24'),
-(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 'cod', '', 2, '2021-06-14 06:11:32', '2021-06-30 21:17:24'),
-(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 'cod', '', 2, '2021-06-20 06:12:33', '2021-06-30 21:17:24'),
-(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 'cod', '', 1, '2021-06-20 10:10:41', '2021-06-30 21:17:24'),
-(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 1, 'pending', 'cod', '', 4, '2021-06-29 05:18:52', '2021-06-30 09:36:49'),
-(6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', '', '', 1, '2021-06-21 11:43:33', '2021-06-30 21:17:24'),
-(7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', '', '', 1, '2021-06-21 11:47:48', '2021-06-30 21:17:24'),
-(8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', '', '', 1, '2021-06-21 11:54:18', '2021-06-30 21:17:24'),
-(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-07-02 12:01:22', '2021-06-30 21:17:24'),
-(10, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 600, '', 600, '11212', 0, 'pending', 'cod', '', 1, '2021-07-02 03:55:35', '0000-00-00 00:00:00');
+INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `payment_type`, `payment_id`, `order_status`, `added_on`, `delivered_on`, `cancel_by`, `cancel_at`) VALUES
+(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '', 0, '1219', 1, 'pending', '', '', 1, '2021-06-09 06:47:15', '2021-06-30 21:17:24', 'user', '2021-07-02 07:58:16'),
+(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 'cod', '', 2, '2021-06-14 06:11:32', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 'cod', '', 2, '2021-06-20 06:12:33', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 'cod', '', 1, '2021-06-20 10:10:41', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 1, 'pending', 'cod', '', 4, '2021-06-29 05:18:52', '2021-06-30 09:36:49', 'user', '2021-07-02 19:37:59'),
+(6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', '', '', 1, '2021-06-21 11:43:33', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', '', '', 1, '2021-06-21 11:47:48', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', '', '', 1, '2021-06-21 11:54:18', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-07-02 12:01:22', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
+(10, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 600, '', 600, '11212', 0, 'pending', 'cod', '', 2, '2021-07-02 03:55:35', '0000-00-00 00:00:00', 'admin', '2021-07-02 08:12:52');
 
 -- --------------------------------------------------------
 

@@ -7,6 +7,7 @@ $cat_dish='';
 $cat_dish_arr=array();
 
 $type='';
+$search_str='';
 
 if(isset($_GET['cat_dish']))
 {
@@ -28,6 +29,11 @@ $cat_dish_str=implode(",",$cat_dish_arr);
 
 if(isset($_GET['type'])){
   $type=get_safe_value($_GET['type']);
+}
+
+
+if(isset($_GET['search_str'])){
+  $search_str=get_safe_value($_GET['search_str']);
 }
 
 $arrType=array("veg","non-veg","both");
@@ -74,6 +80,19 @@ $arrType=array("veg","non-veg","both");
 <!-- veg non veg filteration -->
 <div class="shop-topbar-wrapper">
                             <div class="product-sorting-wrapper">
+                       <!-- search option -->
+                               <div class="product-show shorting-style search_box_main">
+                  <input class="search_box" type="textbox" id="search" value="<?php echo $search_str?>"/>
+                  <input class="search_box seahc_box_btn"  type="button" class="submit btn-style" value="Search" onclick="setSearch()"/>                  
+                                </div>
+
+
+
+
+
+
+
+
                                 <div class="product-show shorting-style ">
                 <?php
                 foreach($arrType as $list){
@@ -143,6 +162,12 @@ $product_sql="select * from dish where status=1";
    $product_sql.=" and type ='$type' ";
    
    }
+
+
+
+
+   if($search_str!=''){   
+ $product_sql.=" and (dish like '%$search_str%' or dish_detail like '%$search_str%') "; }
 
 
    $product_sql.=" order by dish desc";
@@ -353,6 +378,7 @@ else { echo "Dish is not available for now";} ?>
 <form method="get" id="frmCatDish">
             <input type="hidden" name="cat_dish" id="cat_dish" value='<?php echo $cat_dish?>'/>
             <input type="hidden" name="type" id="type" value='<?php echo $type?>'/>
+      <input type="hidden" name="search_str" id="search_str" value='<?php echo $search_str?>'/>
         </form>
 
         

@@ -5449,3 +5449,62 @@ h5.panel-title span {
 .rating{
 	color:green;
 }
+
+
+
+#wallet_top_box{
+	color: #fff;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.wallet_loop .in{
+	color:green;
+}
+
+.wallet_loop .out{
+	color:red;
+}
+
+#add_money_box{
+	margin-bottom:50px;
+}
+
+#add_money_box .w150{
+	width:150px;
+}
+
+#add_money_box .btn{
+	background-color: #e02c2b;
+    border: medium none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    height: 44px;
+    margin-top: 0px;
+}
+
+#error_msg{
+	margin-top: 10px;
+	color:red;
+}
+
+.cancel_btn{
+	background-color: red;
+    padding: 5px 10px 5px 10px;
+    color: #fff;
+}
+
+.search_box_main{
+	width:50%;
+}
+.search_box{
+	width:200px;
+	float:left;
+}
+
+.seahc_box_btn{
+	background-color:#e02c2b;
+	color:#fff;
+	border:0px;
+}

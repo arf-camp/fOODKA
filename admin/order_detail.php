@@ -6,7 +6,22 @@ if(isset($_GET['id']) && $_GET['id']>0){
 	
 	if(isset($_GET['order_status'])){
 		$order_status=get_safe_value($_GET['order_status']);
-		mysqli_query($con,"update order_master set order_status='$order_status' where id='$id'");
+
+
+          if($order_status==5){
+			$cancel_at=date('Y-m-d h:i:s');
+			$sql="update order_master set order_status='$order_status',cancel_by='admin',cancel_at='$cancel_at' where id='$id'";		
+		     }
+
+
+
+         else{
+			$sql="update order_master set order_status='$order_status' where id='$id'";
+		}
+
+
+
+		mysqli_query($con,$sql);
 		redirect(FRONT_SITE_PATH.'admin/order_detail.php?id='.$id);
 	}
 	

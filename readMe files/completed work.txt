@@ -117,3 +117,9 @@ day 22
 Dashboard page: calculator sale: 24 hours sale, 07 days sale, 30 days sale, 365 days sale,
 Most sale dish, Most active user   and  latest 5 orders
 
+
+day 23
+
+order cancel from customer end and admin order detail panel
+complete search function
+

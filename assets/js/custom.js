@@ -329,3 +329,10 @@ function updaterating(id,oid){
 		})
 	}
 }
+
+
+
+function setSearch(){
+	jQuery('#search_str').val(jQuery('#search').val());
+	jQuery('#frmCatDish')[0].submit();
+}
