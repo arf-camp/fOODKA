@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 04:37 PM
+-- Generation Time: Jul 03, 2021 at 03:10 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -139,7 +139,7 @@ CREATE TABLE `coupon_code` (
 --
 
 INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
-(1, 'udemy21', 'P', 30, 40, '2021-06-30', 1, '2021-04-28 06:50:09');
+(1, 'ndub21', 'F', 30, 99, '2021-07-13', 1, '2021-04-28 06:50:09');
 
 -- --------------------------------------------------------
 
@@ -191,7 +191,7 @@ INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `type`,
 (3, 4, 'roshogolla', 'kolkatan', '467_rosh2.jpg', 'veg', 1, '2021-04-30 02:02:17'),
 (4, 1, '7 up ', 'cold drinks', '7 up.jpg', 'veg', 1, '2021-04-30 02:35:29'),
 (5, 2, 'Noodles chinese', 'sold by per plate', '834_chinese.jpg', 'non-veg', 1, '2021-05-01 02:00:30'),
-(6, 4, 'Mishti doi', 'tangail', '918_mishti-doi-recipe.jpg', 'veg', 1, '2021-05-01 04:08:27'),
+(6, 4, 'Mishti doi', 'tangail', '219_mishti doi.jpg', 'veg', 1, '2021-05-01 04:08:27'),
 (7, 6, 'Butter chicken', 'Butter Chicken or murgh makhani is a curry of chicken in a spiced tomato, butter, and cream sauce. It originated in India as a curry. It is similar to chicken tikka masala, which uses a tomato gravy', '305_butter-chicken-500x500.jpg', 'non-veg', 1, '2021-06-03 08:25:45');
 
 -- --------------------------------------------------------
@@ -270,7 +270,8 @@ INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`)
 (8, 7, 5, 45, 3),
 (9, 8, 5, 45, 1),
 (10, 9, 10, 70, 1),
-(11, 10, 7, 100, 6);
+(11, 10, 7, 100, 6),
+(12, 11, 5, 45, 1);
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,8 @@ INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address
 (7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', '', '', 1, '2021-06-21 11:47:48', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
 (8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', '', '', 1, '2021-06-21 11:54:18', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
 (9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-07-02 12:01:22', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(10, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 600, '', 600, '11212', 0, 'pending', 'cod', '', 2, '2021-07-02 03:55:35', '0000-00-00 00:00:00', 'admin', '2021-07-02 08:12:52');
+(10, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 600, '', 600, '11212', 0, 'pending', 'cod', '', 2, '2021-07-02 03:55:35', '0000-00-00 00:00:00', 'admin', '2021-07-02 08:12:52'),
+(11, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 45, '', 45, '11212', 0, 'pending', 'cod', '', 1, '2021-07-03 06:02:49', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -378,7 +380,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`) VALUES
-(1, 0, '', 0, 'website is closed now. You can checkout between 8 am to 10 pm');
+(1, 0, 'To placed order you have to shopping minimum 0 BDT', 0, 'website is closed now. You can checkout between 8 am to 10 pm');
 
 -- --------------------------------------------------------
 
@@ -520,7 +522,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -550,7 +552,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -562,13 +564,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_status`
