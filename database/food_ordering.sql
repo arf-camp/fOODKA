@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 03:10 PM
+-- Generation Time: Jul 12, 2021 at 05:51 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -139,7 +139,7 @@ CREATE TABLE `coupon_code` (
 --
 
 INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
-(1, 'ndub21', 'F', 30, 99, '2021-07-13', 1, '2021-04-28 06:50:09');
+(1, 'ndub21', 'F', 30, 99, '2021-07-11', 1, '2021-07-09 11:06:33');
 
 -- --------------------------------------------------------
 
@@ -260,18 +260,10 @@ CREATE TABLE `order_detail` (
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`) VALUES
-(1, 1, 6, 202, 1),
-(2, 1, 4, 250, 2),
-(3, 2, 10, 70, 2),
-(4, 3, 13, 202, 1),
-(5, 4, 8, 50, 1),
-(6, 5, 8, 50, 1),
-(7, 6, 5, 45, 1),
-(8, 7, 5, 45, 3),
-(9, 8, 5, 45, 1),
-(10, 9, 10, 70, 1),
-(11, 10, 7, 100, 6),
-(12, 11, 5, 45, 1);
+(1, 1, 7, 100, 2),
+(2, 2, 1, 202, 3),
+(3, 3, 5, 45, 1),
+(4, 4, 7, 100, 2);
 
 -- --------------------------------------------------------
 
@@ -306,17 +298,10 @@ CREATE TABLE `order_master` (
 --
 
 INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `payment_type`, `payment_id`, `order_status`, `added_on`, `delivered_on`, `cancel_by`, `cancel_at`) VALUES
-(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 702, '', 0, '1219', 1, 'pending', '', '', 1, '2021-06-09 06:47:15', '2021-06-30 21:17:24', 'user', '2021-07-02 07:58:16'),
-(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 140, '', 0, '1219', 2, 'success', 'cod', '', 2, '2021-06-14 06:11:32', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '1383/8/15/3, Moulovirtec Shohor Khilgaon Rampura, Dhaka-1219', 202, '', 0, '1219', 0, 'pending', 'cod', '', 2, '2021-06-20 06:12:33', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'banani', 50, '', 0, '2341', 0, 'pending', 'cod', '', 1, '2021-06-20 10:10:41', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(5, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', '12 taltola dhaka', 50, 'udemy21', 35, '1219', 1, 'pending', 'cod', '', 4, '2021-06-29 05:18:52', '2021-06-30 09:36:49', 'user', '2021-07-02 19:37:59'),
-(6, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon', 45, '', 45, '12121', 0, 'pending', '', '', 1, '2021-06-21 11:43:33', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(7, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 135, '', 135, '1232', 0, 'pending', '', '', 1, '2021-06-21 11:47:48', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(8, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'khilgaon meradia', 45, '', 45, '2313', 0, 'pending', '', '', 1, '2021-06-21 11:54:18', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(9, 1, 'Farib', 'asheqrahman2621@gmail.com', '01926219940', ' Khilgaon Rampura', 70, '', 70, '1219', 0, 'pending', '', '', 4, '2021-07-02 12:01:22', '2021-06-30 21:17:24', 'user', '2021-07-02 19:37:59'),
-(10, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 600, '', 600, '11212', 0, 'pending', 'cod', '', 2, '2021-07-02 03:55:35', '0000-00-00 00:00:00', 'admin', '2021-07-02 08:12:52'),
-(11, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 45, '', 45, '11212', 0, 'pending', 'cod', '', 1, '2021-07-03 06:02:49', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00');
+(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 200, '', 200, '11212', 1, 'success', 'cod', '', 4, '2021-07-09 11:05:07', '2021-07-09 11:17:20', 'user', '0000-00-00 00:00:00'),
+(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 606, 'ndub21', 576, '11212', 1, 'success', 'cod', '', 4, '2021-07-09 11:07:06', '2021-07-12 09:44:34', 'user', '0000-00-00 00:00:00'),
+(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 45, '', 45, '11212', 0, 'pending', 'cod', '', 1, '2021-07-09 11:10:21', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00'),
+(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'puran dhaka 23232', 200, '', 200, '11212', 0, 'pending', 'cod', '', 4, '2021-07-09 11:20:21', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -359,7 +344,8 @@ CREATE TABLE `rating` (
 --
 
 INSERT INTO `rating` (`id`, `user_id`, `order_id`, `dish_detail_id`, `rating`) VALUES
-(1, 1, 9, 10, 4);
+(1, 1, 1, 7, 5),
+(2, 2, 4, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -380,7 +366,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`) VALUES
-(1, 0, 'To placed order you have to shopping minimum 0 BDT', 0, 'website is closed now. You can checkout between 8 am to 10 pm');
+(1, 40, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.');
 
 -- --------------------------------------------------------
 
@@ -534,7 +520,7 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `delivery_boy`
@@ -552,7 +538,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -564,13 +550,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -582,7 +568,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `setting`

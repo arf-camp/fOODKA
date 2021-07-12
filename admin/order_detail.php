@@ -28,6 +28,18 @@ if(isset($_GET['id']) && $_GET['id']>0){
 	if(isset($_GET['delivery_boy'])){
 		$delivery_boy=get_safe_value($_GET['delivery_boy']);
 		mysqli_query($con,"update order_master set delivery_boy_id='$delivery_boy' where id='$id'");
+
+//trying  email notification
+
+
+
+
+
+
+
+
+
+
 		redirect(FRONT_SITE_PATH.'admin/order_detail.php?id='.$id);
 	}
 	

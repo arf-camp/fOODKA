@@ -10,7 +10,7 @@ if(!isset($_SESSION['DELIVERY_BOY_USER_LOGIN'])){
 if(isset($_GET['set_order_id'])){
 	$set_order_id=get_safe_value($_GET['set_order_id']);
 	$delivered_on=date('Y-m-d h:i:s');
-	mysqli_query($con,"update order_master set order_status=4,delivered_on='$delivered_on' where id='$set_order_id' and delivery_boy_id='".$_SESSION['DELIVERY_BOY_ID']."'");
+	mysqli_query($con,"update order_master set order_status=4,payment_status='success',delivered_on='$delivered_on' where id='$set_order_id' and delivery_boy_id='".$_SESSION['DELIVERY_BOY_ID']."'");
 	
 }
 
