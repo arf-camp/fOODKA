@@ -123,3 +123,8 @@ day 23
 order cancel from customer end and admin order detail panel
 complete search function
 
+
+day 24
+
+delivery boy gets notification when admin assign delivery boy
+

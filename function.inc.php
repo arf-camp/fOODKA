@@ -35,6 +35,29 @@ function redirect($link){
 }
 
 
+// function delivery_boy_mail($id){
+
+
+//         $res=mysqli_query($con,"select email from delivery_boy where id='$id'");
+//         $check=mysqli_num_rows($res);
+
+//          if($check>0){ //if email exist on our database
+
+        
+//         $row=mysqli_fetch_assoc($check);
+//         $email=$row['email'];
+
+
+
+//     $html="YOU HAVE A DELIVERY ORDER.PLEASE CHECK YOUR PROFILE FOR ORDER STATUS";
+//     send_email($email,$html,'NEW ORDER FOR YOU');   
+//      }
+
+
+
+// }
+
+
 function send_email($email,$html,$subject){
 	$mail=new PHPMailer(true);
 	$mail->isSMTP();
@@ -42,9 +65,9 @@ function send_email($email,$html,$subject){
 	$mail->Port=587;
 	$mail->SMTPSecure="tls";
 	$mail->SMTPAuth=true;
-	$mail->Username="arfcampfakeid@gmail.com";      //use your company mail
-	$mail->Password="ARFCAMP@TEST";                    //use your company mail password
-	$mail->SetFrom("arfcampfakeid@gmail.com");    //use your company mail
+	$mail->Username="arfcampfake@gmail.com";      //use your company mail
+	$mail->Password="ARFCAMP@TEST123";                    //use your company mail password
+	$mail->SetFrom("arfcampfake@gmail.com");    //use your company mail
 	$mail->addAddress($email);
 	$mail->IsHTML(true);
 	$mail->Subject=$subject;

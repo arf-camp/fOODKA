@@ -26,18 +26,37 @@ if(isset($_GET['id']) && $_GET['id']>0){
 	}
 	
 	if(isset($_GET['delivery_boy'])){
+
 		$delivery_boy=get_safe_value($_GET['delivery_boy']);
 		mysqli_query($con,"update order_master set delivery_boy_id='$delivery_boy' where id='$id'");
 
-//trying  email notification
+//trying  delivery boy email notification
+      
 
 
 
 
+      
+/////////////////////////////////////////////////////////////////////////////////////
+      
+        $res=mysqli_query($con,"select delivery_boy_id from order_master where id='$id'");
+      
+
+        
+        $row=mysqli_fetch_assoc($res);
+		$delivery_boy_id=$row['delivery_boy_id'];   $order_id=$row['delivery_boy_id'];
+
+        $res1=mysqli_query($con,"select email from delivery_boy where id='$delivery_boy_id'");
+        //$check1=mysqli_num_rows($res1);
+        $row1=mysqli_fetch_assoc($res1);
+        $email=$row1['email'];
 
 
 
-
+		$html="YOU HAVE A DELIVERY ORDER.PLEASE CHECK YOUR PROFILE FOR ORDER STATUS.THIS NOTIFICATION IS FOR ORDER NUMBER ".$id;
+		include('../smtp/PHPMailerAutoload.php');
+		send_email($email,$html,'NEW DELIVERY ORDER NOTIFICATION');   
+	/////////////////////////////////////////////////////////////////////////////////	 
 
 
 		redirect(FRONT_SITE_PATH.'admin/order_detail.php?id='.$id);
