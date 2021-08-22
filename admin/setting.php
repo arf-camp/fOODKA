@@ -6,8 +6,28 @@ if(isset($_POST['submit'])){
 	$cart_min_price_msg=get_safe_value($_POST['cart_min_price_msg']);
 	$website_close=get_safe_value($_POST['website_close']);
 	$website_close_msg=get_safe_value($_POST['website_close_msg']);
+	$wallet_amt=get_safe_value($_POST['wallet_amt']);
 	
-	mysqli_query($con,"update setting set cart_min_price='$cart_min_price', cart_min_price_msg='$cart_min_price_msg', website_close='$website_close', website_close_msg='$website_close_msg' where id='1'");
+	mysqli_query($con,"update setting set cart_min_price='$cart_min_price', cart_min_price_msg='$cart_min_price_msg', website_close='$website_close', website_close_msg='$website_close_msg',wallet_amt='$wallet_amt' where id='1'");
+
+
+?> 
+
+
+<script >
+window.addEventListener('load',function(){
+
+swal("Updated");      })
+
+
+</script>
+
+
+
+<?php 
+
+
+
 }
 
 $row=mysqli_fetch_assoc(mysqli_query($con,"select * from setting where id='1'"));
@@ -15,6 +35,7 @@ $cart_min_price=$row['cart_min_price'];
 $cart_min_price_msg=$row['cart_min_price_msg'];
 $website_close=$row['website_close'];
 $website_close_msg=$row['website_close_msg'];
+$wallet_amt=$row['wallet_amt'];
 
 $websiteCloseArr=array('No','Yes');
 ?>
@@ -50,6 +71,15 @@ $websiteCloseArr=array('No','Yes');
                       <label for="exampleInputEmail3" required>Website Close Msg</label>
                       <input type="textbox" class="form-control" placeholder="Website close msg" name="website_close_msg"  value="<?php echo $website_close_msg?>">
                     </div>
+
+
+<div class="form-group">
+                      <label for="exampleInputEmail3" required>Wallet Amt</label>
+                      <input type="textbox" class="form-control" placeholder="Website close msg" name="wallet_amt"  value="<?php echo $wallet_amt?>">
+                    </div>
+
+
+                    
                     <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
                   </form>
                 </div>

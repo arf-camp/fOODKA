@@ -37,6 +37,7 @@
   <!-- Custom js for this page-->
 <!--   <script src="assets/js/dashboard.js"></script> -->
   <script src="assets/js/data-table.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- End custom js for this page-->
 </body>
 </html>

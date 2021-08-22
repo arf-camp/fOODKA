@@ -30,6 +30,9 @@ if(isset($_SESSION['FOOD_USER_ID'])){
 $userArr=getUserDetailsByid();
 
 $is_error='';
+
+
+
 if(isset($_POST['place_order'])){
 
 // if($cart_min_price!=''){   *(error)
@@ -89,6 +92,16 @@ $sql="insert into order_master(user_id,name,email,mobile,address,zipcode,total_p
 	// include('smtp/PHPMailerAutoload.php');
 	// send_email($email,$emailHTML,'Order Placed');
             if($payment_type=='cod'){
+			$emailHTML=orderEmail($insert_id);
+			include('smtp/PHPMailerAutoload.php');
+			send_email($email,$emailHTML,'Order Placed');
+			redirect(FRONT_SITE_PATH.'success');
+		}
+
+
+		if($payment_type=='wallet'){
+			manageWallet($_SESSION['FOOD_USER_ID'],$final_price,'out','Order Id-'.$insert_id);
+			mysqli_query($con,"update  order_master set payment_status='success' where id='$insert_id'");
 			$emailHTML=orderEmail($insert_id);
 			include('smtp/PHPMailerAutoload.php');
 			send_email($email,$emailHTML,'Order Placed');
@@ -217,14 +230,36 @@ $sql="insert into order_master(user_id,name,email,mobile,address,zipcode,total_p
 
 													</div>
 													<div class="ship-wrapper">
+														
+
+
 														<div class="single-ship">
-															<input type="radio" name="payment_type" value="cod">
+															<input type="radio" name="payment_type" value="cod" checked="checked">
 															<label>Cash on Delivery(COD)</label>
 														</div>
-														<!--<div class="single-ship">
-															<input type="radio" name="address" value="dadress">
-															<label>Ship to different address</label>
-														</div>-->
+
+														<?php
+														$is_dis='';
+														$low_msg='';
+														if($getWalletAmt>=$totalPrice){
+															
+														}else{
+															$is_dis="disabled='disabled'";
+															$low_msg="(Low Wallet Money)";
+														}
+														?>
+														
+
+														<div class="single-ship">
+															<input type="radio" name="payment_type" value="wallet" <?php echo $is_dis?>>
+															<label>Wallet</label>
+															<span style="color:red;font-size:14px;">
+															<?php
+															echo $low_msg;
+															?>
+															</span>
+														</div>
+
 													</div>
 							
 						<div class="billing-back-btn">

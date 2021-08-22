@@ -128,3 +128,9 @@ day 24
 
 delivery boy gets notification when admin assign delivery boy
 
+
+day 25
+
+
+
+adding wallet systemon admin and front system

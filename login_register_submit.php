@@ -38,6 +38,19 @@ $rand_str=rand_str(); //calling made up function for verification random string
                                //$new_password
 
         $id=mysqli_insert_id($con);   //this function will retrieve the recent inserting id
+
+
+//on registration giving wallet amount to customers
+
+$getSetting=getSetting();
+		$wallet_amt=$getSetting['wallet_amt'];  //fetching amount what admin define
+		if($wallet_amt>0){
+			manageWallet($id,$wallet_amt,'in','Register');
+		}
+
+////////////////////////////////////////////////
+
+
 		$html=FRONT_SITE_PATH."verify/".$rand_str;
 		send_email($email,$html,'Verify your email id');
 

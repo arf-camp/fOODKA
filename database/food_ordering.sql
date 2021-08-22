@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2021 at 05:51 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Aug 22, 2021 at 07:14 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -153,16 +153,18 @@ CREATE TABLE `delivery_boy` (
   `mobile` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `status` int(11) NOT NULL,
-  `added_on` datetime NOT NULL
+  `added_on` datetime NOT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `delivery_boy`
 --
 
-INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`) VALUES
-(1, 'KARIM', '01926219940', '123', 1, '2021-04-28 06:48:55'),
-(2, 'Narayan', '52542424', '1234', 1, '2021-06-20 05:21:29');
+INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`, `email`) VALUES
+(1, 'KARIM', '01926219940', '123', 1, '2021-04-28 06:48:55', 'tysonfarib@gmail.com'),
+(2, 'Narayan', '52542424', '1234', 1, '2021-06-20 05:21:29', 'asheqrahman2621@gmail.com'),
+(3, 'rafiq', '01926219940', '123', 1, '2021-08-14 04:53:50', 'tysonfarib1@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -260,10 +262,9 @@ CREATE TABLE `order_detail` (
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`) VALUES
-(1, 1, 7, 100, 2),
-(2, 2, 1, 202, 3),
-(3, 3, 5, 45, 1),
-(4, 4, 7, 100, 2);
+(1, 1, 1, 202, 2),
+(2, 2, 7, 100, 2),
+(3, 3, 5, 45, 1);
 
 -- --------------------------------------------------------
 
@@ -298,10 +299,9 @@ CREATE TABLE `order_master` (
 --
 
 INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `payment_type`, `payment_id`, `order_status`, `added_on`, `delivered_on`, `cancel_by`, `cancel_at`) VALUES
-(1, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 200, '', 200, '11212', 1, 'success', 'cod', '', 4, '2021-07-09 11:05:07', '2021-07-09 11:17:20', 'user', '0000-00-00 00:00:00'),
-(2, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 606, 'ndub21', 576, '11212', 1, 'success', 'cod', '', 4, '2021-07-09 11:07:06', '2021-07-12 09:44:34', 'user', '0000-00-00 00:00:00'),
-(3, 1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 45, '', 45, '11212', 0, 'pending', 'cod', '', 1, '2021-07-09 11:10:21', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00'),
-(4, 2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'puran dhaka 23232', 200, '', 200, '11212', 0, 'pending', 'cod', '', 4, '2021-07-09 11:20:21', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00');
+(1, 1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 404, '', 404, '11212', 0, 'success', 'wallet', '', 1, '2021-08-22 10:46:34', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00'),
+(2, 1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 200, '', 200, '11212', 0, 'pending', 'cod', '', 1, '2021-08-22 11:04:29', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00'),
+(3, 1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 45, '', 45, '121222', 0, 'success', 'wallet', '', 1, '2021-08-22 11:06:29', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -339,14 +339,6 @@ CREATE TABLE `rating` (
   `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `rating`
---
-
-INSERT INTO `rating` (`id`, `user_id`, `order_id`, `dish_detail_id`, `rating`) VALUES
-(1, 1, 1, 7, 5),
-(2, 2, 4, 7, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -358,15 +350,16 @@ CREATE TABLE `setting` (
   `cart_min_price` int(11) NOT NULL,
   `cart_min_price_msg` varchar(200) NOT NULL,
   `website_close` int(11) NOT NULL,
-  `website_close_msg` varchar(200) NOT NULL
+  `website_close_msg` varchar(200) NOT NULL,
+  `wallet_amt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `setting`
 --
 
-INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`) VALUES
-(1, 40, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.');
+INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`, `wallet_amt`) VALUES
+(1, 40, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.', 50);
 
 -- --------------------------------------------------------
 
@@ -391,8 +384,32 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`) VALUES
-(1, ' Farib', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-06-03 01:28:14', 1, 1, 'vnqraihcnpyejjw'),
-(2, 'sahan', 'asheqrahman2621@gmail.com', '01926219940', 'sah1', '2021-06-03 06:16:31', 1, 1, 'qvufchdhraplfwb');
+(1, 'asheq', 'tysonfarib@gmail.com', '01926219940', '123', '2021-08-22 09:04:01', 1, 1, 'nmzruagignfdvvs');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallet`
+--
+
+CREATE TABLE `wallet` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `amt` int(11) NOT NULL,
+  `payment_id` varchar(50) NOT NULL,
+  `msg` varchar(500) NOT NULL,
+  `type` enum('in','out') NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wallet`
+--
+
+INSERT INTO `wallet` (`id`, `user_id`, `amt`, `payment_id`, `msg`, `type`, `added_on`) VALUES
+(1, 1, 450, '0', 'Register', 'in', '2021-08-22 09:04:01'),
+(2, 1, 404, '', 'Order Id-1', 'out', '2021-08-22 10:46:35'),
+(3, 1, 45, '', 'Order Id-3', 'out', '2021-08-22 11:06:29');
 
 --
 -- Indexes for dumped tables
@@ -489,6 +506,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wallet`
+--
+ALTER TABLE `wallet`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -526,7 +549,7 @@ ALTER TABLE `coupon_code`
 -- AUTO_INCREMENT for table `delivery_boy`
 --
 ALTER TABLE `delivery_boy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dish`
@@ -538,7 +561,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -550,13 +573,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -568,7 +591,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -580,7 +603,13 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wallet`
+--
+ALTER TABLE `wallet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

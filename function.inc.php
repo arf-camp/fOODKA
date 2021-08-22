@@ -304,7 +304,7 @@ function orderEmail($oid,$uid=''){
 	
 	$order_id=$getOrderById[0]['id'];
 	$total_amount=$getOrderById[0]['total_price'];
-	
+	$payment_type=$getOrderById[0]['payment_type'];
 	$getOrderDetails=getOrderDetails($oid);
 	
 	$html='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -768,7 +768,8 @@ function orderEmail($oid,$uid=''){
                                 <tr>
                                   <td class="attributes_item">
                                     <span class="f-fallback">
-              <strong>Amount Due:</strong> '.$total_amount.'
+              <strong>Amount:</strong> '.$total_amount.'
+             
             </span>
                                   </td>
                                 </tr>
@@ -779,6 +780,17 @@ function orderEmail($oid,$uid=''){
             </span>
                                   </td>
                                 </tr>
+                                  
+            
+                                  <tr>
+                                  <td class="attributes_item">
+                                    <span class="f-fallback">
+              <strong>Payment Type:</strong> '.$payment_type.'
+            </span>
+                                  </td>
+                                </tr>
+
+
                               </table>
                             </td>
                           </tr>
@@ -947,7 +959,41 @@ function getSale($start,$end){
 }
 
 
+function manageWallet($uid,$amt,$type,$msg,$payment_id=''){
+  global $con;
+  $added_on=date('Y-m-d h:i:s');
+  $sql="insert into wallet(user_id,amt,msg,type,added_on,payment_id) values('$uid','$amt','$msg','$type','$added_on','$payment_id')";
+  $res=mysqli_query($con,$sql);
+}
 
+
+function getWallet($uid){
+  global $con;
+  $sql="select * from wallet where user_id='$uid' order by id desc";
+  $res=mysqli_query($con,$sql);
+  $arr=array();
+  while($row=mysqli_fetch_assoc($res)){
+    $arr[]=$row;
+  }
+  return $arr;
+}
+
+function getWalletAmt($uid){
+  global $con;
+  $sql="select * from wallet where user_id='$uid'";
+  $res=mysqli_query($con,$sql);
+  $in=0;
+  $out=0;
+  while($row=mysqli_fetch_assoc($res)){
+    if($row['type']=='in'){
+      $in=$in+$row['amt'];
+    }
+    if($row['type']=='out'){
+      $out=$out+$row['amt'];
+    }
+  }
+  return $in-$out;
+}
 
 
 

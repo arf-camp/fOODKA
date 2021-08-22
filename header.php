@@ -49,7 +49,12 @@ $totalCartDish=count($cartArr); //counting my cart product
 //     $totalPrice=$totalPrice+($list['qty']*$list['price']);
 // }
 
+//get wallet amount
 
+$getWalletAmt=0;
+if(isset($_SESSION['FOOD_USER_ID'])){
+    $getWalletAmt=getWalletAmt($_SESSION['FOOD_USER_ID']);
+}
 
  ?>
 
@@ -85,12 +90,30 @@ $totalCartDish=count($cartArr); //counting my cart product
             <div class="header-top black-bg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-12 col-sm-4">
+                        <div class="col-lg-8 col-md-4 col-12 col-sm-4">
                             <div class="welcome-area">
                                 <!-- <p>Default welcome msg! </p> -->
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-8 col-12 col-sm-8">
+
+                                           <!-- ///for wallet -->
+                      <div class="col-lg-2 col-md-4 col-12 col-sm-4">
+                            <?php
+                                if(isset($_SESSION['FOOD_USER_NAME'])){
+                                ?>
+                            <div id="wallet_top_box">
+                                <a href="<?php echo FRONT_SITE_PATH?>wallet" style="color:#fff;">
+                                    Wallet Amt:- <?php echo $getWalletAmt?>
+                                </a>
+                                
+                            </div>
+                                <?php  } ?>
+                        </div>
+
+
+
+
+                        <div class="col-lg-2 col-md-8 col-12 col-sm-8">
                             <div class="account-curr-lang-wrap f-right">
                                 <?php
                                 if(isset($_SESSION['FOOD_USER_NAME'])){
