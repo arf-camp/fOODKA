@@ -10,6 +10,23 @@ $getUserDetails=getUserDetailsByid();
             <div class="container">
                 <div class="row">
                     <div class="ml-auto mr-auto col-lg-9">
+
+
+            <!-- //referral code get from database -->
+
+<div>
+
+	<h4>Referral Code: <?php echo $getUserDetails['referral_code']?></h4><br/>
+	<h4>Referral Link: <?php echo FRONT_SITE_PATH?>login_register?referral_code=<?php echo $getUserDetails['referral_code']?></h4><br/>
+							
+</div>
+
+
+
+
+
+
+
                         <div class="checkout-wrapper">
                             <div id="faq" class="panel-group">
                                 <div class="panel panel-default">

@@ -6,7 +6,21 @@ $msg="";
 if(isset($_GET['id']) && $_GET['id']!=''){
 	$id=get_safe_value($_GET['id']);
 	mysqli_query($con,"update user set email_verify=1 where rand_str='$id'");
-	$msg="Your Email Id successfully  verified";
+	$msg="Your Email Id successfully  verified.You can now login";
+
+
+
+
+    /*$res=mysqli_query($con,"select from_referral_code,email from user where rand_str='$id'");
+    if(mysqli_num_rows($res)>0){
+        $row=mysqli_fetch_assoc($res);
+        $email=$row['email'];
+        $from_referral_code=$row['from_referral_code'];
+        $row=mysqli_fetch_assoc(mysqli_query($con,"select id from user where referral_code='$from_referral_code'"));
+        $uid=$row['id'];
+        $msg1='Referral Amt from '.$email;
+        manageWallet($uid,50,'in',$msg1);
+    }*/
 }else{
 	redirect(FRONT_SITE_PATH);   
 }

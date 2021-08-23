@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2021 at 07:14 PM
+-- Generation Time: Aug 23, 2021 at 07:35 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -257,15 +257,6 @@ CREATE TABLE `order_detail` (
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `order_detail`
---
-
-INSERT INTO `order_detail` (`id`, `order_id`, `dish_details_id`, `price`, `qty`) VALUES
-(1, 1, 1, 202, 2),
-(2, 2, 7, 100, 2),
-(3, 3, 5, 45, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -293,15 +284,6 @@ CREATE TABLE `order_master` (
   `cancel_by` enum('user','admin') NOT NULL,
   `cancel_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `order_master`
---
-
-INSERT INTO `order_master` (`id`, `user_id`, `name`, `email`, `mobile`, `address`, `total_price`, `coupon_code`, `final_price`, `zipcode`, `delivery_boy_id`, `payment_status`, `payment_type`, `payment_id`, `order_status`, `added_on`, `delivered_on`, `cancel_by`, `cancel_at`) VALUES
-(1, 1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 404, '', 404, '11212', 0, 'success', 'wallet', '', 1, '2021-08-22 10:46:34', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00'),
-(2, 1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 200, '', 200, '11212', 0, 'pending', 'cod', '', 1, '2021-08-22 11:04:29', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00'),
-(3, 1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'puran dhaka 23232', 45, '', 45, '121222', 0, 'success', 'wallet', '', 1, '2021-08-22 11:06:29', '0000-00-00 00:00:00', 'user', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -351,15 +333,16 @@ CREATE TABLE `setting` (
   `cart_min_price_msg` varchar(200) NOT NULL,
   `website_close` int(11) NOT NULL,
   `website_close_msg` varchar(200) NOT NULL,
-  `wallet_amt` int(11) NOT NULL
+  `wallet_amt` int(11) NOT NULL,
+  `referral_amt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `setting`
 --
 
-INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`, `wallet_amt`) VALUES
-(1, 40, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.', 50);
+INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`, `wallet_amt`, `referral_amt`) VALUES
+(1, 40, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.', 50, 85);
 
 -- --------------------------------------------------------
 
@@ -376,15 +359,10 @@ CREATE TABLE `user` (
   `added_on` datetime NOT NULL,
   `status` int(11) NOT NULL,
   `email_verify` int(11) NOT NULL,
-  `rand_str` varchar(50) NOT NULL
+  `rand_str` varchar(50) NOT NULL,
+  `referral_code` varchar(20) NOT NULL,
+  `from_referral_code` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`) VALUES
-(1, 'asheq', 'tysonfarib@gmail.com', '01926219940', '123', '2021-08-22 09:04:01', 1, 1, 'nmzruagignfdvvs');
 
 -- --------------------------------------------------------
 
@@ -401,15 +379,6 @@ CREATE TABLE `wallet` (
   `type` enum('in','out') NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `wallet`
---
-
-INSERT INTO `wallet` (`id`, `user_id`, `amt`, `payment_id`, `msg`, `type`, `added_on`) VALUES
-(1, 1, 450, '0', 'Register', 'in', '2021-08-22 09:04:01'),
-(2, 1, 404, '', 'Order Id-1', 'out', '2021-08-22 10:46:35'),
-(3, 1, 45, '', 'Order Id-3', 'out', '2021-08-22 11:06:29');
 
 --
 -- Indexes for dumped tables
@@ -561,7 +530,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -573,13 +542,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -603,13 +572,13 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wallet`
 --
 ALTER TABLE `wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

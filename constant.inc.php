@@ -13,6 +13,10 @@ define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT']."/food/");
 //site path
 define('FRONT_SITE_PATH',"http://127.0.0.1/food/");
 
+//contact us path
+
+define('CONTACT_SITE_PATH',"http://127.0.0.1/food/contact-us");
+
 
 // for insert image we will  use this 
 define('SERVER_DISH_IMAGE',SERVER_PATH."media/dish/");

@@ -7,7 +7,9 @@ include ("header.php");
  //if user already logged in can not make it this page
  if(!isset($_SESSION['FOOD_USER_NAME'])){}else{redirect('shop');} 
 
-                                       
+ if(isset($_GET['referral_code']) && $_GET['referral_code']!=''){
+    $_SESSION['FROM_REFERRAL_CODE']=get_safe_value($_GET['referral_code']);
+}                                      
 
 
 ?>

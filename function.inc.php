@@ -239,7 +239,7 @@ function getUserDetailsByid($uid=''){
   global $con;
   $data['name']='';
   $data['email']='';
-  $data['mobile']='';
+  $data['mobile']=''; $data['referral_code']='';
   
   if(isset($_SESSION['FOOD_USER_ID'])){
     $uid=$_SESSION['FOOD_USER_ID'];
@@ -249,6 +249,7 @@ function getUserDetailsByid($uid=''){
   $data['name']=$row['name'];
   $data['email']=$row['email'];
   $data['mobile']=$row['mobile'];
+  $data['referral_code']=$row['referral_code'];
   return $data;
 }
 
@@ -856,7 +857,7 @@ if($getOrderById[0]['coupon_code']!=''){
                             </td>
                           </tr>
                         </table>
-                        <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href="'.FRONT_SITE_PATH.'">support team</a> for help.</p>
+                        <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href="'.CONTACT_SITE_PATH.'">support team</a> for help.</p>
                         <p>Cheers,
                           <br><b>'.FRONT_SITE_NAME.' Developer Team </b></p>
                         <!-- Sub copy -->

@@ -33,11 +33,17 @@ $password=get_safe_value($_POST['password']);
 $rand_str=rand_str(); //calling made up function for verification random string
 
 
-	 
-		mysqli_query($con,"insert into user(name,email,mobile,password,status,email_verify,added_on,rand_str) values('$name','$email','$mobile','$password','1','0','$added_on','$rand_str')");
-                               //$new_password
 
-        $id=mysqli_insert_id($con);   //this function will retrieve the recent inserting id
+
+          $referral_code=rand_str();
+		if(isset($_SESSION['FROM_REFERRAL_CODE']) && $_SESSION['FROM_REFERRAL_CODE']!=''){
+			$from_referral_code=$_SESSION['FROM_REFERRAL_CODE'];
+		}else{
+			$from_referral_code='';
+		}
+		mysqli_query($con,"insert into user(name,email,mobile,password,status,email_verify,added_on,rand_str,referral_code,from_referral_code) values('$name','$email','$mobile','$password','1','0','$added_on','$rand_str','$referral_code','$from_referral_code')");
+		$id=mysqli_insert_id($con);
+		unset($_SESSION['FROM_REFERRAL_CODE']);
 
 
 //on registration giving wallet amount to customers
