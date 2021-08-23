@@ -133,4 +133,11 @@ day 25
 
 
 
-adding wallet systemon admin and front system
+adding user registration bonus  wallet  system on admin and front system
+
+
+day26
+
+add money on user wallet from admin
+
+
