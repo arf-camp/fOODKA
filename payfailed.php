@@ -8,7 +8,9 @@ if(isset($_SESSION['COUPON_CODE'])){
     unset($_SESSION['FINAL_PRICE']);
 }
 
-
+$oid=$_SESSION['ORDER_ID'];
+mysqli_query($con,"delete from  order_master where id='$oid'");
+mysqli_query($con,"delete from  order_detail where order_id='$oid'");
 ?>
 
 <div class="breadcrumb-area gray-bg">
@@ -26,7 +28,7 @@ if(isset($_SESSION['COUPON_CODE'])){
                 <div class="row">
                     <div class="col-lg-12 col-md-7 d-flex align-items-center">
                         <div class="overview-content-2">
-                            <h2>Order has been placed <span>successfully.</span> <br/>Check Order history/email for details.<br/>Order Id <span><?php echo $_SESSION['ORDER_ID']?></span></h2>
+                            <h2>Payment <span>Failed</span>.Order not placed.Please<span> Order again </span> after some time <br/></h2>
                             
                         </div>
                     </div>

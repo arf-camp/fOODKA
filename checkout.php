@@ -109,6 +109,23 @@ $sql="insert into order_master(user_id,name,email,mobile,address,zipcode,total_p
 		}
 
 
+	if($payment_type=='card'){
+			redirect(FRONT_SITE_PATH.'payindex.php') ;
+			die();
+		//	$emailHTML=orderEmail($insert_id);
+		//	include('smtp/PHPMailerAutoload.php');
+		//	send_email($email,$emailHTML,'Order Placed');
+		//	redirect(FRONT_SITE_PATH.'success');
+		}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -259,6 +276,16 @@ $sql="insert into order_master(user_id,name,email,mobile,address,zipcode,total_p
 															?>
 															</span>
 														</div>
+
+
+
+											<!-- card -->
+                                            	<div class="single-ship">
+															<input type="radio" name="payment_type" value="card" checked="checked">
+															<label>Card</label>
+														</div>
+
+
 
 													</div>
 							

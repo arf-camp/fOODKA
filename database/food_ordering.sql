@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2021 at 07:35 PM
+-- Generation Time: Aug 28, 2021 at 12:57 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -91,7 +91,8 @@ INSERT INTO `category` (`id`, `category`, `order_number`, `status`, `added_on`) 
 (2, 'Chinese', 4, 1, '2020-06-16 12:06:41'),
 (3, 'South Indian', 3, 1, '2020-06-16 12:06:59'),
 (4, 'Dessert', 7, 1, '2020-06-16 12:07:18'),
-(6, 'murgh', 8, 1, '2021-06-03 08:23:24');
+(6, 'murgh', 8, 1, '2021-06-03 08:23:24'),
+(9, 'Biriyani', 0, 1, '2021-08-24 07:11:17');
 
 -- --------------------------------------------------------
 
@@ -194,7 +195,8 @@ INSERT INTO `dish` (`id`, `category_id`, `dish`, `dish_detail`, `image`, `type`,
 (4, 1, '7 up ', 'cold drinks', '7 up.jpg', 'veg', 1, '2021-04-30 02:35:29'),
 (5, 2, 'Noodles chinese', 'sold by per plate', '834_chinese.jpg', 'non-veg', 1, '2021-05-01 02:00:30'),
 (6, 4, 'Mishti doi', 'tangail', '219_mishti doi.jpg', 'veg', 1, '2021-05-01 04:08:27'),
-(7, 6, 'Butter chicken', 'Butter Chicken or murgh makhani is a curry of chicken in a spiced tomato, butter, and cream sauce. It originated in India as a curry. It is similar to chicken tikka masala, which uses a tomato gravy', '305_butter-chicken-500x500.jpg', 'non-veg', 1, '2021-06-03 08:25:45');
+(7, 6, 'Butter chicken', 'Butter Chicken or murgh makhani is a curry of chicken in a spiced tomato, butter, and cream sauce. It originated in India as a curry. It is similar to chicken tikka masala, which uses a tomato gravy', '305_butter-chicken-500x500.jpg', 'non-veg', 1, '2021-06-03 08:25:45'),
+(8, 9, 'kacchi', 'made by beef and goat', '625_download.png', 'non-veg', 1, '2021-08-24 07:13:39');
 
 -- --------------------------------------------------------
 
@@ -241,7 +243,8 @@ INSERT INTO `dish_details` (`id`, `dish_id`, `attribute`, `price`, `status`, `ad
 (11, 6, 'per hari ', 70, 1, '2021-05-01 04:08:27'),
 (12, 6, 'per kolshi', 120, 1, '2021-05-01 04:08:27'),
 (13, 7, 'half', 202, 1, '2021-06-03 08:25:45'),
-(14, 7, 'full', 275, 1, '2021-06-03 08:25:45');
+(14, 7, 'full', 275, 1, '2021-06-03 08:25:45'),
+(15, 8, '1 plate', 150, 1, '2021-08-24 07:13:39');
 
 -- --------------------------------------------------------
 
@@ -277,7 +280,8 @@ CREATE TABLE `order_master` (
   `delivery_boy_id` int(11) NOT NULL,
   `payment_status` varchar(20) NOT NULL,
   `payment_type` varchar(10) NOT NULL,
-  `payment_id` varchar(100) NOT NULL,
+  `payment_id` varchar(50) NOT NULL,
+  `txn_id` varchar(50) NOT NULL,
   `order_status` int(11) NOT NULL,
   `added_on` datetime NOT NULL,
   `delivered_on` datetime NOT NULL,
@@ -363,6 +367,13 @@ CREATE TABLE `user` (
   `referral_code` varchar(20) NOT NULL,
   `from_referral_code` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`, `referral_code`, `from_referral_code`) VALUES
+(1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-08-25 08:09:14', 1, 1, 'lexypmqertnlfin', 'ekubvqzcwlnadgf', '');
 
 -- --------------------------------------------------------
 
@@ -500,7 +511,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -524,19 +535,19 @@ ALTER TABLE `delivery_boy`
 -- AUTO_INCREMENT for table `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
 --
 ALTER TABLE `dish_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
@@ -572,7 +583,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wallet`

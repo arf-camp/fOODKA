@@ -71,6 +71,13 @@ include('constant.inc.php');
                 </div>
             </div>
         </div>
+       <!--  <script >
+window.addEventListener('load',function(){
+
+swal("This is a portfolio/Demo website. Dont take it seriously . -made by asheq");      })
+
+
+</script> -->
         <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/imagesloaded.pkgd.min.js"></script>
@@ -78,5 +85,6 @@ include('constant.inc.php');
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </body>
 </html>

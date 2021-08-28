@@ -5,6 +5,24 @@ if(!isset($_SESSION['FOOD_USER_ID'])){
 }
 
 $err_msg='';
+
+
+if(isset($_POST['add_money'])){
+	$amt=get_safe_value($_POST['amt']);
+	if($amt>0){
+		     $_SESSION['AMOUNT']=$amt;
+            redirect(FRONT_SITE_PATH.'walletindex.php') ;
+			die();
+
+	}else{
+		$err_msg="Please enter valid amount";
+	}
+}
+
+
+//////////////////////////////////////////////////////////////
+
+
 // if(isset($_POST['add_money'])){
 // 	$amt=get_safe_value($_POST['amt']);
 // 	if($amt>0){
@@ -23,19 +41,31 @@ $err_msg='';
 // 		$err_msg="Please enter valid amount";
 // 	}
 // }
+
+
+
 ?>
 
 <div class="cart-main-area pt-50 pb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+						
+
+         <!--     //add money from card -->
+
 						<div id="add_money_box">
 							<form method="post" id="frmAddMoney">
-								<input type="number" placeholder="Add Money" name="amt" class="w150" required/>
+								<input type="number" placeholder="Recharge" name="amt" class="w150" required/>
 								<input type="submit" class="btn w150" name="add_money"/>
 								<div id="error_msg"><?php echo $err_msg?></div>
 							</form>
 						</div>
+
+
+
+
+
 							<?php
 							$getWallet=getWallet($_SESSION['FOOD_USER_ID']);
 							?>

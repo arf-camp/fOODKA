@@ -35,40 +35,26 @@ function redirect($link){
 }
 
 
-// function delivery_boy_mail($id){
-
-
-//         $res=mysqli_query($con,"select email from delivery_boy where id='$id'");
-//         $check=mysqli_num_rows($res);
-
-//          if($check>0){ //if email exist on our database
-
-        
-//         $row=mysqli_fetch_assoc($check);
-//         $email=$row['email'];
-
-
-
-//     $html="YOU HAVE A DELIVERY ORDER.PLEASE CHECK YOUR PROFILE FOR ORDER STATUS";
-//     send_email($email,$html,'NEW ORDER FOR YOU');   
-//      }
-
-
-
-// }
 
 
 function send_email($email,$html,$subject){
-	$mail=new PHPMailer(true);
+	
+  $mail=new PHPMailer(true);
 	$mail->isSMTP();
 	$mail->Host="smtp.gmail.com";
-	$mail->Port=587;
-	$mail->SMTPSecure="tls";
+  
+  $mail->Port=587;
+ 
+	 $mail->SMTPSecure="tls";
+  
 	$mail->SMTPAuth=true;
-	$mail->Username="arfcampfake@gmail.com";      //use your company mail
-	$mail->Password="ARFCAMP@TEST123";                    //use your company mail password
-	$mail->SetFrom("arfcampfake@gmail.com");    //use your company mail
-	$mail->addAddress($email);
+	$mail->Username="arfcampfake@gmail.com"; //use your company mail
+	
+   $mail->Password="ARFCAMP@TEST123"; //use your company mail password
+	
+  $mail->SetFrom("arfcampfake@gmail.com"); //use your company mail
+	
+  $mail->addAddress($email);
 	$mail->IsHTML(true);
 	$mail->Subject=$subject;
 	$mail->Body=$html;
@@ -83,6 +69,40 @@ function send_email($email,$html,$subject){
 		//echo "Error occur";
 	}
 }
+
+
+
+
+// function send_email($email,$html,$subject){
+//   $mail=new PHPMailer(true);
+//   $mail->isSMTP();
+
+//   $mail->Host="foodka.arfcamp.com";
+ 
+//   $mail->Port = "465";
+
+//   $mail->SMTPSecure="ssl";
+//   $mail->SMTPAuth=true;
+ 
+//   $mail->Username = "food@foodka.arfcamp.com";
+
+//   $mail->Password = '@@@@@@@@@';
+//   $mail->SetFrom("food@foodka.arfcamp.com");
+//   $mail->addAddress($email);
+//   $mail->IsHTML(true);
+//   $mail->Subject=$subject;
+//   $mail->Body=$html;
+//   $mail->SMTPOptions=array('ssl'=>array(
+//     'verify_peer'=>false,
+//     'verify_peer_name'=>false,
+//     'allow_self_signed'=>false
+//   ));
+//   if($mail->send()){
+//     //echo "done";
+//   }else{
+//     //echo "Error occur";
+//   }
+// }
 
 function rand_str(){
 	$str=str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
@@ -102,6 +122,7 @@ function getUserCart(){   //details will be called
 	}
 	return $arr;
 }
+
 
 
 function manageUserCart($uid,$qty,$attr){
