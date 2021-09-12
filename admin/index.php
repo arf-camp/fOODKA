@@ -93,9 +93,11 @@
 		  <h1 class="font-weight-light mb-4">
 			<?php 
 			$row=mysqli_fetch_assoc(mysqli_query($con,"SELECT count(order_detail.dish_details_id) as t, dish.dish from order_detail,dish_details,dish WHERE order_detail.dish_details_id=dish_details.id and dish_details.dish_id=dish.id group by order_detail.dish_details_id order by count(order_detail.dish_details_id) desc limit 1"));
-			echo $row['dish'];
+
+			if($row['dish']='null'){ echo "empty";}
+		else{	echo $row['dish'];
 			echo "<br/>";
-			echo '<span style="font-size:15px;">('.$row['t'].' Times)</span>';
+			echo '<span style="font-size:15px;">('.$row['t'].' Times)</span>';}
 			?>
 		  </h1>
 		  <div class="d-flex flex-wrap align-items-center">
@@ -115,9 +117,10 @@
 		  <h1 class="font-weight-light mb-4">
 			<?php 
 			$row=mysqli_fetch_assoc(mysqli_query($con,"select count(order_master.user_id) as t,user.name from order_master,user WHERE order_master.user_id=user.id GROUP BY order_master.user_id order by count(order_master.user_id) desc limit 1"));
-			echo $row['name'];
+			if($row['name']='null') { echo " Database empty";}
+			else{echo $row['name'];
 			echo "<br/>";
-			echo '<span style="font-size:15px;">('.$row['t'].' Times)</span>';
+			echo '<span style="font-size:15px;">('.$row['t'].' Times)</span>';}
 			?>
 		  </h1>
 		  <div class="d-flex flex-wrap align-items-center">
