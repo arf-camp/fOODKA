@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2021 at 12:57 AM
+-- Generation Time: Sep 16, 2021 at 07:45 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -140,7 +140,7 @@ CREATE TABLE `coupon_code` (
 --
 
 INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
-(1, 'ndub21', 'F', 30, 99, '2021-07-11', 1, '2021-07-09 11:06:33');
+(1, 'ndub21', 'F', 30, 99, '2021-09-24', 1, '2021-07-09 11:06:33');
 
 -- --------------------------------------------------------
 
@@ -164,8 +164,7 @@ CREATE TABLE `delivery_boy` (
 
 INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`, `email`) VALUES
 (1, 'KARIM', '01926219940', '123', 1, '2021-04-28 06:48:55', 'tysonfarib@gmail.com'),
-(2, 'Narayan', '52542424', '1234', 1, '2021-06-20 05:21:29', 'asheqrahman2621@gmail.com'),
-(3, 'rafiq', '01926219940', '123', 1, '2021-08-14 04:53:50', 'tysonfarib1@gmail.com');
+(2, 'Narayan', '52542424', '1234', 1, '2021-06-20 05:21:29', 'asheqrahman2621@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -346,7 +345,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `cart_min_price`, `cart_min_price_msg`, `website_close`, `website_close_msg`, `wallet_amt`, `referral_amt`) VALUES
-(1, 40, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.', 50, 85);
+(1, 0, 'To placed order you have to shopping minimum 40 BDT', 0, 'website is closed now. You can place order between 7 am to 10 pm.', 60, 85);
 
 -- --------------------------------------------------------
 
@@ -367,13 +366,6 @@ CREATE TABLE `user` (
   `referral_code` varchar(20) NOT NULL,
   `from_referral_code` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `password`, `added_on`, `status`, `email_verify`, `rand_str`, `referral_code`, `from_referral_code`) VALUES
-(1, 'asheq', 'tysonfarib@gmail.com', '01926219940', 'arf', '2021-08-25 08:09:14', 1, 1, 'lexypmqertnlfin', 'ekubvqzcwlnadgf', '');
 
 -- --------------------------------------------------------
 
@@ -541,7 +533,7 @@ ALTER TABLE `dish`
 -- AUTO_INCREMENT for table `dish_cart`
 --
 ALTER TABLE `dish_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `dish_details`
@@ -553,13 +545,13 @@ ALTER TABLE `dish_details`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -583,7 +575,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wallet`

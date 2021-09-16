@@ -6,10 +6,10 @@ $msg="";
 
 
 if(isset($_POST['submit'])){
-	$mobile=get_safe_value($_POST['mobile']);
+	$email=get_safe_value($_POST['email']);
 	$password=get_safe_value($_POST['password']);
 	
-	$sql="select * from delivery_boy where mobile='$mobile' and password='$password'";
+	$sql="select * from delivery_boy where email='$email' and password='$password'";
 	$res=mysqli_query($con,$sql);
 	
   if(mysqli_num_rows($res)>0){
@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
               <h6 class="font-weight-light">Delivery Boy Sign In To Continue</h6>
               <form class="pt-3" method="post">
                 <div class="form-group">
-                  <input type="textbox" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Mobile" name="mobile" required>
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Delivery boy email" name="email" required>
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"  name="password" required>

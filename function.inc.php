@@ -48,11 +48,11 @@ function send_email($email,$html,$subject){
 	 $mail->SMTPSecure="tls";
   
 	$mail->SMTPAuth=true;
-	$mail->Username="arfcampfake@gmail.com"; //use your company mail
+	$mail->Username=""; //use your company mail
 	
-   $mail->Password="ARFCAMP@TEST123"; //use your company mail password
+   $mail->Password=""; //use your company mail password
 	
-  $mail->SetFrom("arfcampfake@gmail.com"); //use your company mail
+  $mail->SetFrom(""); //use your company mail
 	
   $mail->addAddress($email);
 	$mail->IsHTML(true);

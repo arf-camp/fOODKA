@@ -4,7 +4,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-7">
                             <div class="copyright">
-                                <p>Copyright ©<?php echo date('Y') ?> <a href="https://github.com/arf-camp/foodka" target="_blank">ARF_CAMP</a> . All Right Reserved.</p>
+                                <p>Copyright ©<?php echo date('Y') ?> <a href="https://arf-camp.github.io/portfolio/" target="_blank">ARF_CAMP</a> . All Right Reserved.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-5">
